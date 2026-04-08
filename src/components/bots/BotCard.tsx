@@ -1,11 +1,11 @@
 "use client";
 
-import { Bot } from "lucide-react";
+import { Bot as BotIcon } from "lucide-react";
 import { clsx } from "clsx";
 
 type BotStatus = "online" | "offline" | "busy";
 
-interface Bot {
+interface BotData {
   id: string;
   name: string;
   status: BotStatus;
@@ -14,7 +14,7 @@ interface Bot {
 }
 
 interface BotCardProps {
-  bot: Bot;
+  bot: BotData;
 }
 
 const statusConfig = {
@@ -30,7 +30,7 @@ export default function BotCard({ bot }: BotCardProps) {
     <div className="bg-card border border-border rounded-lg p-4 hover:border-accent transition-colors cursor-pointer">
       <div className="flex items-start justify-between mb-3">
         <div className="w-10 h-10 bg-border rounded-lg flex items-center justify-center">
-          <Bot size={20} />
+          <BotIcon size={20} />
         </div>
         <div className={clsx("px-2 py-0.5 rounded-full text-xs font-medium", config.textColor)}>
           {config.label}

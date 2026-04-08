@@ -7,10 +7,10 @@ import BotCard from "@/components/bots/BotCard";
 import ActivityFeed from "@/components/bots/ActivityFeed";
 
 const mockBots = [
-  { id: "incidencias", name: "Incidencias Bot", status: "online", lastActivity: "Hace 2 min", uptime: "99.8%" },
-  { id: "stock", name: "Stock Bot", status: "online", lastActivity: "Hace 5 min", uptime: "99.2%" },
-  { id: "rrhh", name: "RRHH Bot", status: "offline", lastActivity: "Hace 1h", uptime: "—" },
-  { id: "compras", name: "Compras Bot", status: "busy", lastActivity: "Ahora", uptime: "98.5%" },
+  { id: "incidencias", name: "Incidencias Bot", status: "online" as const, lastActivity: "Hace 2 min", uptime: "99.8%" },
+  { id: "stock", name: "Stock Bot", status: "online" as const, lastActivity: "Hace 5 min", uptime: "99.2%" },
+  { id: "rrhh", name: "RRHH Bot", status: "offline" as const, lastActivity: "Hace 1h", uptime: "—" },
+  { id: "compras", name: "Compras Bot", status: "busy" as const, lastActivity: "Ahora", uptime: "98.5%" },
 ];
 
 const mockActivity = [

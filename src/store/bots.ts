@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { toast } from "sonner";
 import type { Bot, BotStats, GatewayStatus } from "@/types/bot";
 import { gatewayApi } from "@/lib/api";
 
@@ -79,13 +80,14 @@ export const useBotsStore = create<BotsState>((set, get) => ({
 
     const success = await gatewayApi.startBot(id);
     if (success) {
+      toast.success("Bot iniciado correctamente");
       set((state) => ({
         bots: state.bots.map((b) =>
           b.id === id ? { ...b, status: "online" } : b
         ),
       }));
     } else {
-      // Revert on failure
+      toast.error(`Error al iniciar bot ${id}`);
       set((state) => ({
         bots: state.bots.map((b) =>
           b.id === id ? { ...b, status: "offline" } : b
@@ -106,13 +108,14 @@ export const useBotsStore = create<BotsState>((set, get) => ({
 
     const success = await gatewayApi.stopBot(id);
     if (success) {
+      toast.success("Bot detenido correctamente");
       set((state) => ({
         bots: state.bots.map((b) =>
           b.id === id ? { ...b, status: "offline" } : b
         ),
       }));
     } else {
-      // Revert on failure
+      toast.error(`Error al detener bot ${id}`);
       set((state) => ({
         bots: state.bots.map((b) =>
           b.id === id ? { ...b, status: "online" } : b
@@ -133,13 +136,14 @@ export const useBotsStore = create<BotsState>((set, get) => ({
 
     const success = await gatewayApi.restartBot(id);
     if (success) {
+      toast.success("Bot reiniciado correctamente");
       set((state) => ({
         bots: state.bots.map((b) =>
           b.id === id ? { ...b, status: "online" } : b
         ),
       }));
     } else {
-      // Revert on failure
+      toast.error(`Error al reiniciar bot ${id}`);
       set((state) => ({
         bots: state.bots.map((b) =>
           b.id === id ? { ...b, status: "offline" } : b

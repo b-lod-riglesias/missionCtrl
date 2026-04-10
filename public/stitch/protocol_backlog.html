@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYNTHETIC SENTINEL | Protocol Backlog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed": "#002021",
+                "primary-container": "#00f5ff",
+                "surface-variant": "#31353c",
+                "secondary": "#44f6a3",
+                "surface-bright": "#353940",
+                "primary": "#e9feff",
+                "on-secondary-fixed": "#002111",
+                "on-primary-container": "#006c71",
+                "outline": "#849495",
+                "on-secondary-container": "#005935",
+                "on-error-container": "#ffdad6",
+                "on-primary-fixed-variant": "#004f53",
+                "surface-container-highest": "#31353c",
+                "primary-fixed": "#63f7ff",
+                "on-surface-variant": "#b9caca",
+                "inverse-surface": "#dfe2eb",
+                "error": "#ffb4ab",
+                "surface-container-lowest": "#0a0e14",
+                "on-tertiary": "#412d00",
+                "background": "#10141a",
+                "surface-dim": "#10141a",
+                "on-error": "#690005",
+                "surface-container-high": "#262a31",
+                "secondary-fixed-dim": "#20e291",
+                "secondary-fixed": "#53ffac",
+                "surface-container-low": "#181c22",
+                "on-tertiary-fixed": "#271900",
+                "on-secondary-fixed-variant": "#005231",
+                "on-secondary": "#003920",
+                "secondary-container": "#00d98a",
+                "tertiary-container": "#ffd895",
+                "surface-tint": "#00dce5",
+                "error-container": "#93000a",
+                "on-tertiary-fixed-variant": "#5e4200"
+            },
+            "borderRadius": {
+                "DEFAULT": "0rem",
+                "lg": "0rem",
+                "xl": "0rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Space Grotesk"],
+                "body": ["Manrope"],
+                "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #10141a;
+            color: #dfe2eb;
+            font-family: 'Manrope', sans-serif;
+        }
+        .mono-label { font-family: 'Space Grotesk', monospace; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #10141a; }
+        ::-webkit-scrollbar-thumb { background: #1c2026; }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center px-6 h-16 w-full fixed top-0 z-50 bg-[#10141a]">
+<div class="flex items-center gap-4">
+<span class="text-xl font-black text-[#e9feff] tracking-widest font-['Space_Grotesk'] tracking-tighter uppercase">SYNTHETIC SENTINEL</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-[#b9caca] hover:bg-[#1c2026] hover:text-[#e9feff] px-3 py-2 font-['Space_Grotesk'] tracking-tighter uppercase transition-colors" href="#">Fleet Overview</a>
+<a class="text-[#b9caca] hover:bg-[#1c2026] hover:text-[#e9feff] px-3 py-2 font-['Space_Grotesk'] tracking-tighter uppercase transition-colors" href="#">Inter-Agent Logs</a>
+<a class="text-[#00F5FF] border-b-2 border-[#00F5FF] px-3 py-2 font-['Space_Grotesk'] tracking-tighter uppercase" href="#">Protocol Backlog</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#b9caca]">notifications_active</span>
+<span class="material-symbols-outlined text-[#b9caca]">emergency_home</span>
+<span class="material-symbols-outlined text-[#b9caca]">terminal</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 font-['Space_Grotesk'] font-bold text-xs uppercase tracking-widest">OVERRIDE MODE</button>
+</div>
+</header>
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 h-full w-64 flex flex-col z-40 bg-[#181c22] border-r-0 pt-16">
+<div class="p-6 mb-4">
+<h2 class="text-lg font-black text-[#00F5FF] font-['Space_Grotesk'] uppercase">MISSION CONTROL</h2>
+<p class="text-[10px] text-on-surface-variant font-mono tracking-[0.2em]">V.2.0.4-STABLE</p>
+</div>
+<div class="flex-1 space-y-1">
+<a class="text-[#b9caca] hover:text-[#e9feff] pl-5 py-4 flex items-center gap-3 transition-colors hover:bg-[#1c2026] font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+                Fleet Overview
+            </a>
+<a class="text-[#b9caca] hover:text-[#e9feff] pl-5 py-4 flex items-center gap-3 transition-colors hover:bg-[#1c2026] font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                Inter-Agent Logs
+            </a>
+<a class="bg-[#1c2026] text-[#00F5FF] border-l-4 border-[#00F5FF] pl-4 py-4 flex items-center gap-3 font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+                Protocol Backlog
+            </a>
+<a class="text-[#b9caca] hover:text-[#e9feff] pl-5 py-4 flex items-center gap-3 transition-colors hover:bg-[#1c2026] font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                System History
+            </a>
+<a class="text-[#b9caca] hover:text-[#e9feff] pl-5 py-4 flex items-center gap-3 transition-colors hover:bg-[#1c2026] font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+                Config
+            </a>
+</div>
+<div class="p-6 space-y-4">
+<button class="w-full bg-[#1c2026] text-primary py-3 font-['Space_Grotesk'] text-xs font-black uppercase tracking-widest border border-outline-variant/30 hover:bg-surface-variant transition-colors">
+                NEW MISSION
+            </button>
+<div class="pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 text-on-surface-variant py-2 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="biometric_setup">android_fingerprint</span>
+                    Diagnostics
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant py-2 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                    Support
+                </a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-background">
+<!-- Dashboard Header -->
+<div class="p-8 border-b border-outline-variant/10 flex justify-between items-end">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="text-secondary font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest">System Operational</span>
+</div>
+<h1 class="text-4xl font-headline font-black uppercase tracking-tighter text-primary">Protocol Backlog</h1>
+<p class="text-on-surface-variant max-w-md mt-2 text-sm">Sequential mission orchestration for active neural units. Monitor and prioritize pending machine-layer operations.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-low p-4 text-right">
+<p class="text-[10px] text-on-surface-variant font-headline uppercase tracking-widest">Pending Load</p>
+<p class="text-2xl font-headline font-black text-primary">14 OPS</p>
+</div>
+<div class="bg-surface-container-low p-4 text-right">
+<p class="text-[10px] text-on-surface-variant font-headline uppercase tracking-widest">Avg Completion</p>
+<p class="text-2xl font-headline font-black text-secondary">08:42s</p>
+</div>
+</div>
+</div>
+<!-- Backlog Board Layout -->
+<div class="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Filter & Status Bar (Asymmetric) -->
+<div class="lg:col-span-12 flex gap-4 overflow-x-auto pb-4">
+<button class="px-6 py-2 bg-surface-container text-primary font-headline text-xs font-bold uppercase tracking-widest border-b-2 border-primary-container">All Protocols</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant font-headline text-xs font-bold uppercase tracking-widest hover:bg-surface-container transition-colors">In Queue</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant font-headline text-xs font-bold uppercase tracking-widest hover:bg-surface-container transition-colors">Active Threads</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant font-headline text-xs font-bold uppercase tracking-widest hover:bg-surface-container transition-colors">Delayed</button>
+<div class="flex-grow"></div>
+<div class="bg-surface-container-low flex items-center px-4">
+<span class="material-symbols-outlined text-outline mr-2 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-headline font-bold uppercase tracking-widest text-primary placeholder:text-outline-variant" placeholder="SEARCH PROTOCOLS..." type="text"/>
+</div>
+</div>
+<!-- Main Kanban/List Mix -->
+<div class="lg:col-span-8 space-y-4">
+<!-- Protocol Item: Critical -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-all group border-l-4 border-error-container">
+<div class="p-6 flex items-start gap-6">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest p-4 w-20">
+<span class="text-[10px] text-on-surface-variant font-headline font-bold uppercase">Priority</span>
+<span class="text-error font-headline font-black text-sm uppercase">CRITICAL</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-1">
+<span class="text-[10px] text-on-surface-variant font-headline tracking-widest">UID: 0092-ALPHA</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container text-[9px] font-black uppercase tracking-tighter">Immediate Attention</span>
+</div>
+<h3 class="text-xl font-headline font-bold text-primary group-hover:text-primary-container transition-colors">API Response Optimization</h3>
+<div class="flex items-center gap-6 mt-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center">
+<img alt="Bot" class="w-6 h-6 grayscale brightness-150" data-alt="close up profile photo of a futuristic robotic assistant head with blue glowing sensors and metallic finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQsvw4EHQNunM2lHIZerR8JE7qULJAYYNbw4beKaL7Pqq3Vcs4iOk38sPCjr8xfrD3uV2MQUobUmWYMgVYJAQt_v3V3VMfg0ozcqv31SgTbHWLOhzAlUdWAagiyGjyVDQVUQironM3j7PYn4hMDG0NtOvqNinEQKc5T1ChktVcdRn4LrdoL4S2iRyzjl1q58v-j27wwAMXiS5YxYkxFhMEfunOFb2Ex3vPBV8ARCSmK70uu62ofrU3ldrGPGv2QOfOw9VgtVG_tA"/>
+</div>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Assigned Unit</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">SENTINEL-B1</p>
+</div>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/20 pl-6">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Est. Completion</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">00:45:12</p>
+</div>
+</div>
+<div class="flex-grow"></div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity bg-primary-container text-on-primary-container px-4 py-2 font-headline font-black text-[10px] uppercase tracking-widest">DEPLOY NOW</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Protocol Item: High -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-all group border-l-4 border-tertiary-container">
+<div class="p-6 flex items-start gap-6">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest p-4 w-20">
+<span class="text-[10px] text-on-surface-variant font-headline font-bold uppercase">Priority</span>
+<span class="text-tertiary-fixed-dim font-headline font-black text-sm uppercase">HIGH</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-1">
+<span class="text-[10px] text-on-surface-variant font-headline tracking-widest">UID: 0094-BRAVO</span>
+</div>
+<h3 class="text-xl font-headline font-bold text-primary group-hover:text-primary-container transition-colors">Model Fine-tuning: Llama-3-Refined</h3>
+<div class="flex items-center gap-6 mt-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center">
+<img alt="Bot" class="w-6 h-6 grayscale brightness-150" data-alt="abstract icon of a robotic unit with glowing green circuitry and sleek titanium plating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLur_HfyODrOy0RF_k7tNlUtkIiuLNjeq1WYS8XK3cd49prGB34YVdbqEwaPGotT49xxks7hGOcSGRfV_yZawyUbXqBTZvkyk5ODfrPf5bk5gXPkAKK6zeHC5DxX0t0m2Ae-fi0M1_W0UaK0-Kj3tF1LbPf9Uutzkv2VtVWmETyYVw6ktEpEhGZJ7mF5B98S8FW3nJ-EBUMiReSqCNEtS-7KSaUU6aL6nxX6hFXgjXA-8J79CqZX8OiZ9JLDUJoBayW2SHHIPtWg"/>
+</div>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Assigned Unit</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">SENTINEL-B4</p>
+</div>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/20 pl-6">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Est. Completion</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">04:12:00</p>
+</div>
+</div>
+<div class="flex-grow"></div>
+<div class="w-32 bg-surface-container-lowest h-1.5 overflow-hidden">
+<div class="bg-secondary h-full w-2/3"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Protocol Item: Medium -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-all group border-l-4 border-outline-variant">
+<div class="p-6 flex items-start gap-6">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest p-4 w-20">
+<span class="text-[10px] text-on-surface-variant font-headline font-bold uppercase">Priority</span>
+<span class="text-outline font-headline font-black text-sm uppercase">MEDIUM</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-1">
+<span class="text-[10px] text-on-surface-variant font-headline tracking-widest">UID: 0101-GAMMA</span>
+</div>
+<h3 class="text-xl font-headline font-bold text-primary group-hover:text-primary-container transition-colors">Vector Database Indexing</h3>
+<div class="flex items-center gap-6 mt-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-outline">smart_toy</span>
+</div>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Assigned Unit</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">UNASSIGNED</p>
+</div>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/20 pl-6">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Est. Completion</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">12:30:00</p>
+</div>
+</div>
+<div class="flex-grow"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Protocol Item: Low -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-all group border-l-4 border-surface-variant">
+<div class="p-6 flex items-start gap-6">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest p-4 w-20">
+<span class="text-[10px] text-on-surface-variant font-headline font-bold uppercase">Priority</span>
+<span class="text-on-surface-variant font-headline font-black text-sm uppercase">LOW</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-1">
+<span class="text-[10px] text-on-surface-variant font-headline tracking-widest">UID: 0105-DELTA</span>
+</div>
+<h3 class="text-xl font-headline font-bold text-primary group-hover:text-primary-container transition-colors">Legacy Log Compression</h3>
+<div class="flex items-center gap-6 mt-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center">
+<img alt="Bot" class="w-6 h-6 grayscale brightness-150" data-alt="minimalist side profile of a cybernetic bot head with amber light detailing and matte black finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwpmp9fBSOn21lQE03oCML9Rp_fckpl7XZh4t7DBAOo6JFtjr3qa-qnWSg-F4bunyEJXhwTUPsiBRNtMYDr0lTz_WKI3ba_P_-1QTam3eRVjCc1aQawYzRkRLDKX7sdqzhAAlHozy5DypPp0McWcK_RTpyMUg9BM14VqQpJvl9no59_8Qg48zh4nTaw3ivku0-vKqCI9DWLEAaYYasl5Ho6f_0LJI_FzWKkMOC8dDeSsDoSGj9qV2MfXqWpwqdDXQ4p_jMSv1sjw"/>
+</div>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Assigned Unit</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">SENTINEL-B9</p>
+</div>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/20 pl-6">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Est. Completion</p>
+<p class="text-[11px] font-bold uppercase text-on-surface">48:00:00</p>
+</div>
+</div>
+<div class="flex-grow"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Monitor Panel (Asymmetric Sidebar) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Unit Availability Module -->
+<div class="bg-surface-container-low p-6">
+<h4 class="text-xs font-headline font-black uppercase tracking-[0.2em] text-primary mb-6 flex justify-between">
+                        Agent Availability
+                        <span class="material-symbols-outlined text-xs">monitoring</span>
+</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-xs font-headline font-bold uppercase tracking-wider text-on-surface">Sentinel-B1</span>
+</div>
+<span class="text-[10px] font-mono text-secondary">ACTIVE</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-xs font-headline font-bold uppercase tracking-wider text-on-surface">Sentinel-B2</span>
+</div>
+<span class="text-[10px] font-mono text-secondary">ACTIVE</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+<span class="text-xs font-headline font-bold uppercase tracking-wider text-on-surface">Sentinel-B3</span>
+</div>
+<span class="text-[10px] font-mono text-tertiary-container">STANDBY</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error-container"></div>
+<span class="text-xs font-headline font-bold uppercase tracking-wider text-on-surface">Sentinel-B4</span>
+</div>
+<span class="text-[10px] font-mono text-error-container">MAX_LOAD</span>
+</div>
+</div>
+</div>
+<!-- Neural Load Telemetry -->
+<div class="bg-surface-container-low p-6 overflow-hidden relative">
+<h4 class="text-xs font-headline font-black uppercase tracking-[0.2em] text-primary mb-2">Neural Load Pulse</h4>
+<div class="h-32 w-full flex items-end gap-1 pt-4">
+<div class="w-full bg-secondary/10 h-12 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/30 to-transparent"></div>
+<!-- Mock Sparkline -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none">
+<polyline fill="none" points="0,40 20,20 40,45 60,10 80,30 100,5 120,40 140,25 160,50 180,10 200,30 220,15 240,40 260,20 280,35 300,5" stroke="#44f6a3" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+<div class="flex justify-between mt-4">
+<div>
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Current Peak</p>
+<p class="text-lg font-headline font-black text-primary">94.2%</p>
+</div>
+<div class="text-right">
+<p class="text-[9px] text-on-surface-variant font-headline uppercase">Buffer Status</p>
+<p class="text-lg font-headline font-black text-secondary">STABLE</p>
+</div>
+</div>
+</div>
+<!-- Quick Actions Actuator -->
+<div class="bg-primary-container p-6 flex flex-col gap-4">
+<h4 class="text-xs font-headline font-black uppercase tracking-[0.2em] text-on-primary-container">Batch Protocols</h4>
+<button class="bg-[#10141a] text-primary-container py-3 font-headline font-black text-[11px] uppercase tracking-[0.2em] hover:bg-on-primary-container hover:text-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                        OPTIMIZE ALL THREADS
+                    </button>
+<button class="border border-on-primary-container/30 text-on-primary-container py-3 font-headline font-black text-[11px] uppercase tracking-[0.2em] hover:bg-on-primary-container/10 transition-colors">
+                        EXPORT MISSION DATA
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Command FAB -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary-container text-on-primary-container flex items-center justify-center z-50 hover:scale-105 active:scale-95 transition-transform shadow-[0_0_20px_rgba(0,245,255,0.3)] group">
+<span class="material-symbols-outlined text-3xl">add</span>
+<div class="absolute right-20 bg-surface-container-highest px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+<span class="text-[10px] font-headline font-black uppercase tracking-widest text-primary">Queue New Protocol</span>
+</div>
+</button>
+</body></html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OpenClaws - Mission Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#091c35",
+                        "tertiary-fixed": "#8df7c1",
+                        "primary-container": "#0052cc",
+                        "secondary-container": "#cdddff",
+                        "surface-container": "#edeef0",
+                        "secondary-fixed-dim": "#b7c7e8",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fb",
+                        "primary": "#003d9b",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "outline": "#737685",
+                        "surface-tint": "#0c56d0",
+                        "on-secondary-container": "#51617e",
+                        "on-tertiary-container": "#7de7b2",
+                        "surface-variant": "#e1e2e4",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-container": "#006844",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005235",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#434654",
+                        "on-secondary-fixed-variant": "#374763",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-primary-fixed": "#001848",
+                        "surface-dim": "#d9dadc",
+                        "inverse-surface": "#2e3132",
+                        "primary-fixed": "#dae2ff",
+                        "tertiary-fixed-dim": "#71dba6",
+                        "on-primary-container": "#c4d2ff",
+                        "surface": "#f8f9fb",
+                        "secondary": "#4f5f7b",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#004e32",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f4f6",
+                        "surface-bright": "#f8f9fb",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "inverse-primary": "#b2c5ff",
+                        "outline-variant": "#c3c6d6",
+                        "surface-container-high": "#e7e8ea"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fb; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="text-on-surface bg-background">
+<!-- SideNavBar Shell -->
+<aside class="fixed h-[calc(100vh-16px)] w-64 left-2 top-2 rounded-xl bg-slate-50 dark:bg-slate-900 shadow-sm flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 font-headline">OpenClaws</h1>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mt-1">Command Center</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="trello">pinboard</span>
+<span class="font-body">Task Board</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-body">Backlog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold border-l-2 border-emerald-400 bg-white dark:bg-slate-800 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-body">Mission Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full py-2.5 mb-4 bg-gradient-to-br from-primary to-primary-container text-white rounded-md font-semibold text-sm shadow-md hover:opacity-90 transition-opacity">
+                New Mission
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-body text-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-body text-sm">Account</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex items-center justify-between px-8 w-full">
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-low border-none rounded-lg py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search mission archives..." type="text"/>
+</div>
+<nav class="flex gap-6 text-sm font-medium">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200" href="#">Active Sprints</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200" href="#">Reports</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="professional portrait of a senior commander in a dark suit with a clean office background in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8E0XbNeNm4h69qa2OF5z_F-mlVnihGCRU8x6rc2JssKo6sMn1o2HsRvspO-FqeXFHnsgUYlgcYb_4ND1M2IZzRFDtKkbh-e85Q_9DHVw_h7IdQrgcTZa3QfQqAGhljTXj-yvNPTD8LkVt4FbOex7wjr1BxjMkiSpyCVvu1N8YGOBSmoP4WGmoFhahJ1R6Xp51ODXkqTez1oD_I7Re_wHOKOP70R98FPXXb2mzdbfwcfvGPg8B8rbDzYB8TybNcMB3CZX4fe7UIA"/>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-1.5 rounded-md text-sm font-semibold shadow-sm hover:scale-95 duration-150 ease-in-out">
+                Deploy
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-72 pt-24 pr-8 pb-12 min-h-screen">
+<!-- Header Section -->
+<div class="mb-10">
+<div class="flex items-end justify-between">
+<div>
+<span class="text-[10px] font-bold tracking-[0.2em] text-primary uppercase mb-2 block">System Archives</span>
+<h2 class="text-4xl font-extrabold text-on-surface font-headline tracking-tight">Mission Logs</h2>
+<p class="text-on-surface-variant mt-2 max-w-2xl">Historical record of all finalized tactical operations, system-wide updates, and commander directives.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white border border-outline-variant/30 rounded-lg text-sm font-medium hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+                        Filter
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white border border-outline-variant/30 rounded-lg text-sm font-medium hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span>
+                        Past 30 Days
+                    </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Stats Section -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="task_alt">task_alt</span>
+</div>
+<span class="text-[10px] font-bold text-tertiary-container bg-tertiary-fixed/20 px-2 py-0.5 rounded-full">+12% vs LY</span>
+</div>
+<p class="text-3xl font-extrabold font-headline">1,429</p>
+<p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider mt-1">Missions Logged</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="update">update</span>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">System Stable</span>
+</div>
+<p class="text-3xl font-extrabold font-headline">84</p>
+<p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider mt-1">Patch Updates</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-primary text-white p-6 rounded-xl shadow-md relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-white/70 text-xs font-bold uppercase tracking-widest mb-4">Commander's Insight</p>
+<p class="text-lg font-semibold leading-snug">Average mission completion time has improved by 4.2 hours this quarter.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-9xl" data-icon="auto_graph">auto_graph</span>
+</div>
+</div>
+</div>
+<!-- Tonal Log Table -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50">
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Mission Name</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Timestamp</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Commander</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest text-right">Details</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-2 w-2 rounded-full bg-primary-container"></div>
+<div>
+<p class="font-bold text-on-surface">Operation Shadow Phoenix</p>
+<p class="text-xs text-on-surface-variant">Log ID: 4920-X</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold rounded-full uppercase">Success</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface">Oct 24, 2023</p>
+<p class="text-[10px] text-on-surface-variant">08:42 UTC</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Commander" class="h-full w-full object-cover" data-alt="close-up portrait of a focused man in tactical gear with a neutral expression and professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDu18MlkelIyk0nkSysy87pnkZnbU3QtZXlxcT9Dgxv1t3Z49yitK5shLoZTMDFNlG4fnLreiDYO8kZ5ZiXTPOSkLwd4sBSmKCZ_CigQtQPi27YpDCnH_LAaS3GRuA_pH8IaUUDxLwC45J7_kqj3jryWfzvrKxmsvpZNmJZvS-7gaVuo5eNy-_MwK6QESCx3buixhHmzKb9PR5w7UgFVPAdOB5E3sHxOWRMv-OqWBPWGv5OzgxyTymJ-YrFZ4Auci4VcFh3cu02g"/>
+</div>
+<span class="text-sm font-medium">Capt. Sterling</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:underline text-sm font-bold">View Log</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-2 w-2 rounded-full bg-secondary"></div>
+<div>
+<p class="font-bold text-on-surface">System Patch v.9.4.2</p>
+<p class="text-xs text-on-surface-variant">Log ID: 4918-S</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase">Deployed</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface">Oct 23, 2023</p>
+<p class="text-[10px] text-on-surface-variant">23:15 UTC</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+<span class="text-[10px] text-white font-bold">AI</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant italic">System Core</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:underline text-sm font-bold">Release Notes</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-2 w-2 rounded-full bg-error"></div>
+<div>
+<p class="font-bold text-on-surface">Deep Sea Reconnaissance</p>
+<p class="text-xs text-on-surface-variant">Log ID: 4912-F</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded-full uppercase">Aborted</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface">Oct 21, 2023</p>
+<p class="text-[10px] text-on-surface-variant">14:02 UTC</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Commander" class="h-full w-full object-cover" data-alt="professional headshot of a woman in a high-tech control room environment with soft blue glowing lights in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI57d6Q0urDIS0DOKlEJpeIFTFqOhYeV8ZUx8hICzu0zVDbm-YLpuBjKADpwsERmNIuKJp0sjalNNrZuyCCbxQIDpcfCJcbHTvM5pPzZfHodV9DX3Tbx6xBaTp1MxMcQ6iOvp8p02CtHK7v8iptFwbwdQbS2nRqKfvnZfvryjKQfQfL4Aa_grriiM3ANm1FZYl1KVLkXB-3LXPo79YgGXDE1L_AG7tZWNDGflThFxy_aGS-hNXX2ejfzLnj7CX7HIv0MCGDCrBWw"/>
+</div>
+<span class="text-sm font-medium">Cmdr. Vance</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:underline text-sm font-bold">Audit</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-2 w-2 rounded-full bg-primary-container"></div>
+<div>
+<p class="font-bold text-on-surface">Project Aurora Extraction</p>
+<p class="text-xs text-on-surface-variant">Log ID: 4905-X</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold rounded-full uppercase">Success</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface">Oct 19, 2023</p>
+<p class="text-[10px] text-on-surface-variant">03:55 UTC</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Commander" class="h-full w-full object-cover" data-alt="focused portrait of a young military officer in a minimalist gray studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJabj2SfxiSJD53Aa3FAwwsQih1YVvBMTosPe1R1jGUO7y4g8flSByFDq2_MpDeLSwXFxEl7P4LZc8nwDU0cy2QPxwjF76GmaZDtgtg3Sf0Tps1pkw4FKCGf1bnVSisnicoTG8ArR0aVl0GcBkQ4NbTwfZ51Y_9rw9v4rIKcAPi57IIs-7dnAW4wvQ4U5PHpCTu8lgZVqukNb3Cgfz7dSFWztxI3BHB30HVHOJyA31eoRoCkqkvfgqWrbgA94GexTXvw6IaVGaQw"/>
+</div>
+<span class="text-sm font-medium">Lt. Marcus</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:underline text-sm font-bold">View Log</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-6 py-4 bg-surface-container border-t border-outline-variant/10 flex items-center justify-between">
+<p class="text-xs text-on-surface-variant font-medium">Showing 1 to 4 of 1,429 mission logs</p>
+<div class="flex gap-1">
+<button class="p-1.5 rounded bg-surface-container-high text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded bg-primary text-white text-xs font-bold">1</button>
+<button class="px-3 py-1 rounded bg-white text-on-surface text-xs font-bold border border-outline-variant/20 hover:bg-surface-container-high">2</button>
+<button class="px-3 py-1 rounded bg-white text-on-surface text-xs font-bold border border-outline-variant/20 hover:bg-surface-container-high">3</button>
+<button class="p-1.5 rounded bg-surface-container-high text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

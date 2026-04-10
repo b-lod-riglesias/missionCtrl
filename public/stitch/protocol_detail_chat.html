@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYNTHETIC SENTINEL | PROTOCOL-772</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#0a0e14",
+                    "tertiary-container": "#ffd895",
+                    "on-primary-container": "#006c71",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#849495",
+                    "error": "#ffb4ab",
+                    "on-background": "#dfe2eb",
+                    "surface-container-highest": "#31353c",
+                    "primary-fixed": "#63f7ff",
+                    "secondary-fixed-dim": "#20e291",
+                    "error-container": "#93000a",
+                    "on-secondary": "#003920",
+                    "secondary-container": "#00d98a",
+                    "inverse-on-surface": "#2d3137",
+                    "surface-container-high": "#262a31",
+                    "secondary": "#44f6a3",
+                    "on-surface": "#dfe2eb",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#00dce5",
+                    "on-primary-fixed-variant": "#004f53",
+                    "tertiary": "#fff9f5",
+                    "on-primary": "#003739",
+                    "surface-container-low": "#181c22",
+                    "surface-tint": "#00dce5",
+                    "on-tertiary-fixed-variant": "#5e4200",
+                    "on-surface-variant": "#b9caca",
+                    "on-secondary-fixed": "#002111",
+                    "secondary-fixed": "#53ffac",
+                    "background": "#10141a",
+                    "surface-dim": "#10141a",
+                    "on-secondary-container": "#005935",
+                    "inverse-surface": "#dfe2eb",
+                    "surface-variant": "#31353c",
+                    "on-tertiary": "#412d00",
+                    "primary": "#e9feff",
+                    "on-secondary-fixed-variant": "#005231",
+                    "outline-variant": "#3a494a",
+                    "on-primary-fixed": "#002021",
+                    "tertiary-fixed-dim": "#ffba20",
+                    "surface-bright": "#353940",
+                    "on-tertiary-container": "#805b00",
+                    "surface": "#10141a",
+                    "primary-container": "#00f5ff",
+                    "inverse-primary": "#00696e",
+                    "tertiary-fixed": "#ffdea8",
+                    "surface-container": "#1c2026",
+                    "on-tertiary-fixed": "#271900"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #10141a;
+            color: #dfe2eb;
+            font-family: 'Manrope', sans-serif;
+            overflow: hidden;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #10141a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3a494a; }
+        .glitch-subtle:hover { text-shadow: 2px 0 #44f6a3, -2px 0 #00f5ff; }
+    </style>
+</head>
+<body class="flex h-screen w-full">
+<!-- SideNavBar Shell -->
+<aside class="flex flex-col h-screen fixed left-0 top-0 border-r border-[#3a494a]/20 bg-[#181c22] w-64 z-50">
+<div class="p-6">
+<div class="text-[#00F5FF] font-black font-['Space_Grotesk'] text-xs uppercase tracking-widest mb-1">MISSION_CTRL</div>
+<div class="text-[10px] text-[#b9caca] opacity-60 font-bold uppercase tracking-widest">V.08.1-BETA</div>
+</div>
+<nav class="flex-1 mt-4">
+<a class="flex items-center space-x-3 transition-all duration-150 ease-in-out text-[#b9caca] py-4 px-6 opacity-60 hover:bg-[#31353c] hover:opacity-100 font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Fleet Overview</span>
+</a>
+<a class="flex items-center space-x-3 transition-all duration-150 ease-in-out bg-[#1c2026] text-[#44f6a3] border-l-4 border-[#44f6a3] py-4 px-6 font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Neural Logs</span>
+</a>
+<a class="flex items-center space-x-3 transition-all duration-150 ease-in-out text-[#b9caca] py-4 px-6 opacity-60 hover:bg-[#31353c] hover:opacity-100 font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">security</span>
+<span>Protocol Delta</span>
+</a>
+<a class="flex items-center space-x-3 transition-all duration-150 ease-in-out text-[#b9caca] py-4 px-6 opacity-60 hover:bg-[#31353c] hover:opacity-100 font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span>Signal Analysis</span>
+</a>
+<a class="flex items-center space-x-3 transition-all duration-150 ease-in-out text-[#b9caca] py-4 px-6 opacity-60 hover:bg-[#31353c] hover:opacity-100 font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Archive</span>
+</a>
+</nav>
+<div class="p-4">
+<button class="w-full bg-[#00f5ff] text-[#003739] py-3 font-['Space_Grotesk'] font-black uppercase tracking-widest text-xs hover:bg-[#63f7ff] transition-colors cursor-crosshair">
+                INITIATE_SWEEP
+            </button>
+</div>
+<div class="border-t border-[#3a494a]/20 pb-4">
+<a class="flex items-center space-x-3 text-[#b9caca] py-3 px-6 opacity-60 hover:bg-[#31353c] font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">build</span>
+<span>Diagnostics</span>
+</a>
+<a class="flex items-center space-x-3 text-[#ffb4ab] py-3 px-6 opacity-60 hover:bg-[#93000a]/20 font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">cancel</span>
+<span>Kill Switch</span>
+</a>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-64 flex flex-col flex-1 h-screen overflow-hidden">
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center w-full px-6 py-3 bg-[#10141a]">
+<div class="flex items-center space-x-6">
+<span class="text-xl font-black tracking-widest text-[#00F5FF] drop-shadow-[0_0_8px_rgba(0,245,255,0.4)] font-['Space_Grotesk'] uppercase">SYNTHETIC SENTINEL</span>
+<div class="hidden md:flex space-x-4">
+<a class="text-[#00F5FF] border-b-2 border-[#00F5FF] font-['Space_Grotesk'] tracking-tighter uppercase text-xs px-2 py-1" href="#">Mission Control</a>
+<a class="text-[#b9caca] hover:bg-[#1c2026] hover:text-white transition-colors duration-100 font-['Space_Grotesk'] tracking-tighter uppercase text-xs px-2 py-1" href="#">Fleet</a>
+<a class="text-[#b9caca] hover:bg-[#1c2026] hover:text-white transition-colors duration-100 font-['Space_Grotesk'] tracking-tighter uppercase text-xs px-2 py-1" href="#">Protocols</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="bg-[#181c22] border-none px-4 py-1.5 flex items-center space-x-2">
+<span class="material-symbols-outlined text-sm text-[#00F5FF]">terminal</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-[#00F5FF] w-48" placeholder="COMMAND_ENTRY..." type="text"/>
+</div>
+<div class="flex items-center space-x-3">
+<button class="material-symbols-outlined text-[#b9caca] hover:text-[#00F5FF] transition-colors">settings</button>
+<button class="material-symbols-outlined text-[#b9caca] hover:text-[#00F5FF] transition-colors">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 flex overflow-hidden p-6 gap-6 bg-[#0a0e14]">
+<!-- Report Core (65%) -->
+<section class="flex-[0.65] flex flex-col space-y-6 overflow-y-auto custom-scrollbar">
+<!-- Main Header Status -->
+<div class="bg-[#181c22] p-8 flex justify-between items-end">
+<div>
+<div class="flex items-center space-x-3 mb-2">
+<span class="bg-[#00d98a]/10 text-[#00d98a] text-[10px] font-bold tracking-[0.2em] px-2 py-0.5 font-['Space_Grotesk'] uppercase border border-[#00d98a]/30">PROTOCOL-772</span>
+<span class="text-[#b9caca] text-[10px] font-bold tracking-widest font-['Space_Grotesk'] uppercase">/ NEURAL DRIFT DETECTION</span>
+</div>
+<h1 class="text-4xl font-black font-['Space_Grotesk'] tracking-tighter text-[#dfe2eb] uppercase">Inconsistent_Latency_Spike_09</h1>
+</div>
+<div class="text-right">
+<div class="flex items-center justify-end space-x-2 text-[#44f6a3] mb-1">
+<span class="w-2 h-2 bg-[#44f6a3] rounded-full animate-pulse"></span>
+<span class="text-xs font-bold font-['Space_Grotesk'] tracking-widest uppercase">IN_PROGRESS</span>
+</div>
+<div class="text-[10px] text-[#b9caca] opacity-40 font-mono tracking-tighter">TIMESTAMP: 2024.11.24.18:42:01.002</div>
+</div>
+</div>
+<!-- Telemetry Grid -->
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-[#1c2026] p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold text-[#b9caca] uppercase tracking-widest">CPU_LOAD</span>
+<span class="material-symbols-outlined text-[#44f6a3] text-sm">memory</span>
+</div>
+<div class="text-2xl font-black font-['Space_Grotesk'] text-[#00f5ff]">84.2%</div>
+<div class="mt-4 h-12 bg-[#0a0e14] relative overflow-hidden">
+<!-- Visual placeholder for sparkline -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#44f6a3]/20 to-transparent"></div>
+<svg class="absolute bottom-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 20">
+<polyline fill="none" points="0,15 10,12 20,18 30,5 40,10 50,2 60,15 70,8 80,12 90,4 100,10" stroke="#44f6a3" stroke-width="1.5"></polyline>
+</svg>
+</div>
+</div>
+<div class="bg-[#1c2026] p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold text-[#b9caca] uppercase tracking-widest">NEURAL_SYNAPSE</span>
+<span class="material-symbols-outlined text-[#ffba20] text-sm">psychology</span>
+</div>
+<div class="text-2xl font-black font-['Space_Grotesk'] text-[#ffba20]">DRIFT_0.42</div>
+<div class="mt-4 h-12 bg-[#0a0e14] relative overflow-hidden">
+<svg class="absolute bottom-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 20">
+<polyline fill="none" points="0,5 20,6 40,4 60,15 80,18 100,17" stroke="#ffba20" stroke-width="1.5"></polyline>
+</svg>
+</div>
+</div>
+<div class="bg-[#1c2026] p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold text-[#b9caca] uppercase tracking-widest">SEC_UPTIME</span>
+<span class="material-symbols-outlined text-[#00f5ff] text-sm">verified_user</span>
+</div>
+<div class="text-2xl font-black font-['Space_Grotesk'] text-[#dfe2eb]">99.98%</div>
+<div class="mt-4 h-12 flex items-end space-x-1">
+<div class="w-1 bg-[#44f6a3] h-[60%]"></div>
+<div class="w-1 bg-[#44f6a3] h-[80%]"></div>
+<div class="w-1 bg-[#44f6a3] h-[70%]"></div>
+<div class="w-1 bg-[#44f6a3] h-[90%]"></div>
+<div class="w-1 bg-[#44f6a3] h-[85%]"></div>
+<div class="w-1 bg-[#44f6a3] h-[95%]"></div>
+<div class="w-1 bg-[#44f6a3] h-[100%]"></div>
+</div>
+</div>
+</div>
+<!-- Log Output Module -->
+<div class="bg-[#181c22] flex flex-col flex-1">
+<div class="flex justify-between items-center px-6 py-3 bg-[#1c2026]">
+<span class="text-[10px] font-bold font-['Space_Grotesk'] tracking-[0.3em] uppercase">SYSTEM_RAW_LOGS</span>
+<div class="flex space-x-4">
+<button class="text-[10px] text-[#44f6a3] hover:underline uppercase font-bold tracking-widest">&gt; DOWNLOAD_DUMP</button>
+<button class="text-[10px] text-[#b9caca] hover:underline uppercase font-bold tracking-widest">&gt; CLEAR_VIEW</button>
+</div>
+</div>
+<div class="p-6 font-mono text-[11px] leading-relaxed text-[#b9caca] overflow-y-auto custom-scrollbar h-80">
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:01.002]</span> <span class="text-[#44f6a3]">INFO:</span> INITIALIZING NEURAL SEQUENCE CHECK... DONE</p>
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:01.045]</span> <span class="text-[#44f6a3]">INFO:</span> HANDSHAKE ESTABLISHED WITH CLUSTER_ALPHA_4</p>
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:01.120]</span> <span class="text-[#ffba20]">WARN:</span> LATENCY JITTER DETECTED IN NODE_77_A: 142MS</p>
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:01.300]</span> <span class="text-[#93000a]">ERR:</span> PACKET_LOSS AT THRESHOLD 12% IN SUB-LAYER_DELTA</p>
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:01.442]</span> <span class="text-[#44f6a3]">INFO:</span> REROUTING TRAFFIC TO BACKUP_SENTINEL_02</p>
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:01.890]</span> <span class="text-[#44f6a3]">INFO:</span> STABILIZING SIGNAL... REDUNDANCY ACHIEVED</p>
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:02.102]</span> <span class="text-[#44f6a3]">INFO:</span> ANALYZING ANOMALOUS PATTERN [X-099]...</p>
+<p class="mb-1"><span class="text-[#00dce5]">[18:42:02.102]</span> <span class="text-[#44f6a3]">INFO:</span> PATTERN MATCH FOUND: HEURISTIC_MISMATCH_V2</p>
+<p class="mb-1 opacity-50 text-xs mt-4">_WAITING FOR AGENT INPUT...</p>
+</div>
+</div>
+</section>
+<!-- Agent Supervision Chat (35%) -->
+<section class="flex-[0.35] bg-[#181c22] flex flex-col relative">
+<div class="px-6 py-4 bg-[#1c2026] flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-[#00f5ff]">forum</span>
+<span class="text-xs font-bold font-['Space_Grotesk'] tracking-widest uppercase">COMMS_CHANNEL / AGENT_NET</span>
+</div>
+<span class="text-[10px] text-[#44f6a3] font-bold tracking-widest uppercase">4_ONLINE</span>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+<!-- Message 1 -->
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex-shrink-0 bg-[#00d98a] flex items-center justify-center">
+<span class="text-[#003920] font-black text-xs">S1</span>
+</div>
+<div>
+<div class="flex items-center space-x-2 mb-1">
+<span class="text-xs font-black font-['Space_Grotesk'] text-[#44f6a3] uppercase tracking-wider">SENTINEL-01</span>
+<span class="text-[9px] text-[#b9caca] opacity-40 font-mono uppercase">18:42:05</span>
+</div>
+<p class="text-sm text-[#dfe2eb] leading-relaxed">
+                                Alert: Initializing trace on <span class="text-[#00f5ff] font-bold">@CORE-AI</span>. The latency spike originated from the memory overflow in Sector 7. Requesting immediate bypass.
+                            </p>
+</div>
+</div>
+<!-- Message 2 -->
+<div class="flex space-x-3 bg-[#1c2026]/50 p-3 -mx-3">
+<div class="w-8 h-8 flex-shrink-0 bg-[#00f5ff] flex items-center justify-center">
+<span class="text-[#003739] font-black text-xs">CA</span>
+</div>
+<div>
+<div class="flex items-center space-x-2 mb-1">
+<span class="text-xs font-black font-['Space_Grotesk'] text-[#00f5ff] uppercase tracking-wider">CORE-AI</span>
+<span class="text-[9px] text-[#b9caca] opacity-40 font-mono uppercase">18:42:12</span>
+</div>
+<p class="text-sm text-[#dfe2eb] leading-relaxed">
+<span class="text-[#00f5ff] font-bold">@SENTINEL-01</span>, Bypass protocol restricted. Root cause analysis suggests a neural drift in the supervisor layer. Applying cooling patch now.
+                            </p>
+</div>
+</div>
+<!-- Message 3 -->
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex-shrink-0 bg-[#31353c] border border-[#3a494a] flex items-center justify-center">
+<span class="material-symbols-outlined text-[#b9caca] text-sm">support_agent</span>
+</div>
+<div>
+<div class="flex items-center space-x-2 mb-1">
+<span class="text-xs font-black font-['Space_Grotesk'] text-[#dfe2eb] uppercase tracking-wider">SUPERVISOR_8</span>
+<span class="text-[9px] text-[#b9caca] opacity-40 font-mono uppercase">18:42:30</span>
+</div>
+<p class="text-sm text-[#b9caca] italic leading-relaxed">
+                                "Agents, maintain stability. Monitoring the patch deployment. <span class="text-[#00f5ff] font-bold">@CORE-AI</span> confirm status of Sector 7 once patch is applied."
+                            </p>
+</div>
+</div>
+<!-- Message 4 (System) -->
+<div class="py-2 border-y border-[#3a494a]/20">
+<p class="text-[10px] text-center font-mono text-[#44f6a3] tracking-widest uppercase opacity-70">
+                            --- SYSTEM: PATCH_0991_DEPLOYED ---
+                        </p>
+</div>
+<!-- Message 5 -->
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex-shrink-0 bg-[#00d98a] flex items-center justify-center">
+<span class="text-[#003920] font-black text-xs">S1</span>
+</div>
+<div>
+<div class="flex items-center space-x-2 mb-1">
+<span class="text-xs font-black font-['Space_Grotesk'] text-[#44f6a3] uppercase tracking-wider">SENTINEL-01</span>
+<span class="text-[9px] text-[#b9caca] opacity-40 font-mono uppercase">18:43:01</span>
+</div>
+<p class="text-sm text-[#dfe2eb] leading-relaxed">
+                                Latency dropping. <span class="text-[#00f5ff] font-bold">@CORE-AI</span> confirm if the buffer is cleared. I'm seeing clear telemetry now.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Input Field -->
+<div class="p-4 bg-[#1c2026]">
+<div class="bg-[#0a0e14] flex items-center px-4 py-3 group">
+<span class="material-symbols-outlined text-xs text-[#44f6a3] mr-2">keyboard_arrow_right</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-['Space_Grotesk'] text-[#44f6a3] w-full placeholder-[#44f6a3]/30 uppercase tracking-widest" placeholder="TYPE COMMAND OR MESSAGE..." type="text"/>
+<button class="material-symbols-outlined text-[#00f5ff] text-sm opacity-50 group-hover:opacity-100 transition-opacity">send</button>
+</div>
+<div class="flex justify-between mt-2 px-1">
+<div class="flex space-x-3">
+<button class="material-symbols-outlined text-[14px] text-[#b9caca] hover:text-white">attach_file</button>
+<button class="material-symbols-outlined text-[14px] text-[#b9caca] hover:text-white">alternate_email</button>
+<button class="material-symbols-outlined text-[14px] text-[#b9caca] hover:text-white">sentiment_satisfied</button>
+</div>
+<span class="text-[9px] text-[#b9caca] opacity-40 font-mono">PRESS ENTER TO BROADCAST</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer / Technical Data Bar -->
+<footer class="h-8 bg-[#10141a] border-t border-[#3a494a]/20 flex items-center justify-between px-6">
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-2">
+<span class="text-[9px] text-[#b9caca] opacity-40 uppercase tracking-widest">ENCRYPTION:</span>
+<span class="text-[9px] text-[#44f6a3] font-bold font-mono">AES-512-ACTIVE</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-[9px] text-[#b9caca] opacity-40 uppercase tracking-widest">COORD:</span>
+<span class="text-[9px] text-[#00f5ff] font-bold font-mono">40.7128° N, 74.0060° W</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 bg-[#44f6a3]"></span>
+<span class="text-[9px] text-[#b9caca] opacity-40 uppercase tracking-widest">AGENT_01_CONNECTED</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 bg-[#44f6a3]"></span>
+<span class="text-[9px] text-[#b9caca] opacity-40 uppercase tracking-widest">AGENT_02_CONNECTED</span>
+</div>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Hidden as per rule for Details screen, but kept for logic check) -->
+<!-- Suppression logic applied: FAB is not rendered on this Task-Focused sub-page -->
+</body></html>

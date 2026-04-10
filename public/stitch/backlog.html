@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#091c35",
+                        "tertiary-fixed": "#8df7c1",
+                        "primary-container": "#0052cc",
+                        "secondary-container": "#cdddff",
+                        "surface-container": "#edeef0",
+                        "secondary-fixed-dim": "#b7c7e8",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fb",
+                        "primary": "#003d9b",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "outline": "#737685",
+                        "surface-tint": "#0c56d0",
+                        "on-secondary-container": "#51617e",
+                        "on-tertiary-container": "#7de7b2",
+                        "surface-variant": "#e1e2e4",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-container": "#006844",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005235",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#434654",
+                        "on-secondary-fixed-variant": "#374763",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-primary-fixed": "#001848",
+                        "surface-dim": "#d9dadc",
+                        "inverse-surface": "#2e3132",
+                        "primary-fixed": "#dae2ff",
+                        "tertiary-fixed-dim": "#71dba6",
+                        "on-primary-container": "#c4d2ff",
+                        "surface": "#f8f9fb",
+                        "secondary": "#4f5f7b",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#004e32",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f4f6",
+                        "surface-bright": "#f8f9fb",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "inverse-primary": "#b2c5ff",
+                        "outline-variant": "#c3c6d6",
+                        "surface-container-high": "#e7e8ea"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed h-[calc(100vh-16px)] w-64 left-2 top-2 rounded-xl bg-slate-50 dark:bg-slate-900 shadow-sm flex flex-col py-6 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">shield</span>
+</div>
+<div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">OpenClaws</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Command Center</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">pinboard</span>
+<span class="font-medium">Task Board</span>
+</a>
+<!-- Active Navigation for Backlog Screen -->
+<a class="flex items-center gap-3 px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold border-l-2 border-emerald-400 bg-white dark:bg-slate-800 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-medium">Backlog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-medium">Mission Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-6">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2 shadow-md">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Mission
+            </button>
+</div>
+<div class="mt-auto space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-sm font-medium">Account</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex items-center justify-between px-8 w-full">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low rounded-full text-sm border-none focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search backlog..." type="text"/>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 text-sm font-medium transition-all" href="#">Active Sprints</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 text-sm font-medium transition-all" href="#">Reports</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 text-sm font-medium transition-all" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 text-outline hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-outline hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/30 mx-2"></div>
+<button class="text-primary font-semibold text-sm hover:underline px-2 transition-all">Share</button>
+<button class="bg-primary text-white px-5 py-1.5 rounded-md font-semibold text-sm shadow-sm hover:shadow-md transition-all active:scale-95">Deploy</button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="close-up portrait of a professional woman with a minimalist corporate aesthetic, neutral background, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXrlWptsyUtWPPASlayrkeU12lov9vQZV4iGM615G0YQQfhAdtK39FTTgEtE5pcknJ802XtQV7T-GU7_mdwiuuKb-Tsx3xEnuDRoryzYIuVmjjRBVG8D-yVUCIYUzUfcKMrrFx2eld7eAWKR_O7T3By0vjRMjCGTylrYRaJPHRgV4jE_9x6Rd0zP3v1XjN2FD2vqsaZG3cEM_BgqUiAWDuDyasb4ga86W9ymjNX9b5yfsJ_Dm1EF93XIhD1d3YkLjgYscRCu6DYg"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 px-8 pb-12 min-h-screen">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<h1 class="text-3xl font-extrabold text-on-surface tracking-tight mb-1">Backlog</h1>
+<p class="text-on-surface-variant font-medium">OpenClaws / Mission Control / v2.4.0</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-background" data-alt="professional male portrait avatar with clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsWTs-hTLE2sLrhMGQ61LFLckjQAvctFY24rgEKnv_u25vG3RH3dUNS2TGWaarTdnQM8D0wsjn2uTrl-mofq2hWVeoRo82a_F1Gy55yNSjIJ3OxUF6vL7eg5hxBWXfmsnoBRKxpFPDYJe3OhEB4zJBfcohZOHTgP-r6OizgKNUP6lnXzsKmJrsW8tQSWCNzPijBztjlBHxytXnfcSXScglgel39qD_bFhGMOLL3uOluVWIIjzVPJjz_9sCkCkYd4F34MBc-KsYpg"/>
+<img class="w-8 h-8 rounded-full border-2 border-background" data-alt="professional female portrait avatar with clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0j-ZVe4Bwk8jaHXGHK24AL1t2VNkNAN_M-DqIhiLHLd3L1CW9ze4B_YemvIy-JBOGKZ45eUJmAHM-SgTlom-0JSD8dTjeVaV5PjzamorigAW_ra_0WLuGtI_Ys2aMnDdxcl3c1eHgeg6j4mH3AD2aMLEtJW7h9n8xEXvUDDoAT8FF5knboP5gMyBaAc43wU9SvpfTqIvySUPdAS78BnV50-QFFv-14xP8HeR4ciDOFAA8NI51It3vnwyVc2vQ-8pD1FTDnrTFNQ"/>
+<img class="w-8 h-8 rounded-full border-2 border-background" data-alt="professional male portrait avatar with clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcZubUGfvHvrS_bZNnUlhlKXaafuoS0azOMYdR6ugYtZXKX5_-jEP4tfXdyicd1bqklA2fVeDhkTFBv2pKbj1fYpk2v4RFxD8QOptY-J7Q7fizAQuPTG0HbnYjM_hOd-_si7O7g6RUJJxQIkAAOeVXdhhZk8bxAdExW__GrdevYyqyDO4zKA9iU7-h1Ww-edyG3Zd-qCd2r4LnHsXDR8i3o56dgNw2zrbxYa7boMRSS6E1hotjzfVtycdx01xnI5pObwhrPfgiUg"/>
+<div class="w-8 h-8 rounded-full border-2 border-background bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">+12</div>
+</div>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-lg text-sm font-semibold hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                    Invite
+                </button>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="flex flex-wrap items-center gap-3 mb-6">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant/20 rounded-full text-sm font-medium hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-base">filter_list</span>
+                Priority
+                <span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant/20 rounded-full text-sm font-medium hover:bg-surface-container-low transition-all">
+                Status
+                <span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant/20 rounded-full text-sm font-medium hover:bg-surface-container-low transition-all">
+                Epics
+                <span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/30 mx-1"></div>
+<button class="text-sm font-semibold text-primary hover:bg-primary-fixed/30 px-3 py-2 rounded-lg transition-colors">Clear all</button>
+</div>
+<!-- Backlog Container -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: Versions and Epics (Editorial Feel) -->
+<div class="col-span-12 lg:col-span-3 space-y-6">
+<!-- Versioning Section -->
+<section class="bg-surface-container-low p-5 rounded-xl border border-transparent">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-sm text-on-surface uppercase tracking-wider">Versions</h3>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">add_circle</span>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-sm">v2.4.0</span>
+<span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded-full uppercase">Current</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+<div class="flex justify-between mt-2 text-[10px] font-medium text-on-surface-variant">
+<span>14 Feb 2024</span>
+<span>85% Done</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest/50 rounded-lg border border-outline-variant/20">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-sm text-on-surface/70">v2.5.0</span>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase">Planned</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 opacity-30">
+<div class="bg-primary h-1.5 rounded-full" style="width: 12%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Epics Section -->
+<section class="bg-surface-container-low p-5 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-sm text-on-surface uppercase tracking-wider">Epics</h3>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">add_circle</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-2 hover:bg-surface-container-high rounded-lg cursor-pointer transition-colors group">
+<div class="w-2 h-6 bg-blue-500 rounded-full"></div>
+<span class="text-sm font-semibold flex-1">Neural Interface</span>
+<span class="text-[10px] font-bold text-outline group-hover:text-on-surface">12</span>
+</div>
+<div class="flex items-center gap-3 p-2 hover:bg-surface-container-high rounded-lg cursor-pointer transition-colors group">
+<div class="w-2 h-6 bg-purple-500 rounded-full"></div>
+<span class="text-sm font-semibold flex-1">Tactical HUD</span>
+<span class="text-[10px] font-bold text-outline group-hover:text-on-surface">8</span>
+</div>
+<div class="flex items-center gap-3 p-2 hover:bg-surface-container-high rounded-lg cursor-pointer transition-colors group">
+<div class="w-2 h-6 bg-emerald-500 rounded-full"></div>
+<span class="text-sm font-semibold flex-1">Bio-Metric Sync</span>
+<span class="text-[10px] font-bold text-outline group-hover:text-on-surface">24</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Backlog Tasks (Jira Style List) -->
+<div class="col-span-12 lg:col-span-9 space-y-8">
+<!-- Current Sprint Section -->
+<div class="space-y-4">
+<div class="flex items-center justify-between bg-surface-container-high/50 p-3 rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline cursor-pointer">expand_more</span>
+<h2 class="font-bold text-on-surface">Alpha Sprint 14</h2>
+<span class="text-xs font-medium text-on-surface-variant">24 Jan - 07 Feb (12 Issues)</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-1">
+<span class="w-5 h-5 rounded-full bg-tertiary flex items-center justify-center text-[10px] text-white font-bold">5</span>
+<span class="w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-[10px] text-white font-bold">4</span>
+<span class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">3</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider">Complete Sprint</button>
+</div>
+</div>
+<!-- Task List Items -->
+<div class="space-y-px">
+<!-- Task Card 1 -->
+<div class="group flex items-center gap-4 p-4 bg-surface-container-lowest hover:bg-surface-container-low transition-colors rounded-t-xl border-b border-outline-variant/10 cursor-grab active:cursor-grabbing">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+<span class="material-symbols-outlined text-primary" data-weight="fill">check_box</span>
+<span class="text-xs font-bold text-outline w-16">OC-1242</span>
+<p class="flex-1 text-sm font-medium text-on-surface">Implement zero-latency handshake for remote drone command</p>
+<div class="flex items-center gap-4">
+<div class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-bold rounded uppercase">Neural</div>
+<img class="w-6 h-6 rounded-full" data-alt="user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB4TUBo-rPfSELtuC06mQFZA-9E1b5O05ZUoJKQ0-hPxPjoLILuT-gLZl2QQH6wY1urPvJ3RGUINi_WhkCfrfdtKS8iDQpyo9xFgUGQl32J-BjvZiSgJS6QBvqc3nHq5q0ATk64cRIuqz7vIPyDUYoPzFuBX_PHGsUgO-OFt92ItI5vQ3AeFbrW0ldfI0LyZL3EaPqBDNVOMQ_YN49AOUkgI-3ALQFYFAYIR_rJg7sH6h77g1-H5r8VDsSRpcDutvv4gkF-2ahEA"/>
+<span class="material-symbols-outlined text-error text-lg" title="High Priority">keyboard_double_arrow_up</span>
+<span class="w-6 h-6 rounded-md bg-surface-container flex items-center justify-center text-[10px] font-bold">8</span>
+</div>
+</div>
+<!-- Task Card 2 -->
+<div class="group flex items-center gap-4 p-4 bg-surface-container-lowest hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+<span class="material-symbols-outlined text-primary">bookmark</span>
+<span class="text-xs font-bold text-outline w-16">OC-1243</span>
+<p class="flex-1 text-sm font-medium text-on-surface">Refactor mission log data structure for high-density visualization</p>
+<div class="flex items-center gap-4">
+<div class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded uppercase">Sync</div>
+<img class="w-6 h-6 rounded-full" data-alt="user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0naqqynvurajZJlEtaF0DMZ2yD7G03eTRxueiLAE3FzaflLCkPm7dDFN0NJ5qzIw9yOMhIAMt3CmzgqIN2m2X3s8z4tLPKxjGLuoZ5SzyV3y6ME8Qh12hBxVUAF83UE48uftKmXccI4KBkW3PoPvPy4xvvYtiHcKOpLRquMYK5gEUhI54YabaQjQUTvvC4wJQs44mF_QbPTatZJbUILAKa4JJuYbMK7Bnbgqvy-kg8py1VIUAuwiYYi4opGTlFlO6sOpWTh595w"/>
+<span class="material-symbols-outlined text-secondary text-lg">drag_handle</span>
+<span class="w-6 h-6 rounded-md bg-surface-container flex items-center justify-center text-[10px] font-bold">5</span>
+</div>
+</div>
+<!-- Task Card 3 -->
+<div class="group flex items-center gap-4 p-4 bg-surface-container-lowest hover:bg-surface-container-low transition-colors rounded-b-xl">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+<span class="material-symbols-outlined text-error">warning</span>
+<span class="text-xs font-bold text-outline w-16">OC-1244</span>
+<p class="flex-1 text-sm font-medium text-on-surface">Security Breach: Investigate abnormal uplink activity in Sector 7</p>
+<div class="flex items-center gap-4">
+<div class="px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-bold rounded uppercase">Security</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">person</span>
+</div>
+<span class="material-symbols-outlined text-error text-lg" title="Critical">priority_high</span>
+<span class="w-6 h-6 rounded-md bg-surface-container flex items-center justify-center text-[10px] font-bold">13</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Future Backlog Section -->
+<div class="space-y-4">
+<div class="flex items-center justify-between bg-surface-container-low p-3 rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline cursor-pointer">chevron_right</span>
+<h2 class="font-bold text-on-surface/60">Backlog</h2>
+<span class="text-xs font-medium text-on-surface-variant">(42 Issues)</span>
+</div>
+<button class="text-xs font-bold text-primary px-3 py-1 hover:bg-primary/5 rounded transition-colors">Create Sprint</button>
+</div>
+<div class="opacity-80 grayscale-[0.3]">
+<div class="group flex items-center gap-4 p-3 bg-surface-container-lowest/40 hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/10">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+<span class="material-symbols-outlined text-primary">bookmark</span>
+<span class="text-xs font-bold text-outline w-16">OC-988</span>
+<p class="flex-1 text-sm font-medium text-on-surface">Audit telemetry logs for v2.5 release candidates</p>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary text-lg">keyboard_arrow_down</span>
+<span class="w-6 h-6 rounded-md bg-surface-container-low flex items-center justify-center text-[10px] font-bold">2</span>
+</div>
+</div>
+<div class="group flex items-center gap-4 p-3 bg-surface-container-lowest/40 hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/10">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+<span class="material-symbols-outlined text-primary">bookmark</span>
+<span class="text-xs font-bold text-outline w-16">OC-989</span>
+<p class="flex-1 text-sm font-medium text-on-surface">Prepare stakeholder report for quarterly mission review</p>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-lg">drag_handle</span>
+<span class="w-6 h-6 rounded-md bg-surface-container-low flex items-center justify-center text-[10px] font-bold">3</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low/30 border-2 border-dashed border-outline-variant/20 rounded-lg flex items-center justify-center gap-2 text-outline hover:text-primary hover:border-primary/40 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-base">add</span>
+<span class="text-sm font-semibold">Create issue</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressed on Backlog as per guidelines, but adding for interaction context if needed for specifically 'task' creation) -->
+<!-- SUPPRESSED BASED ON RULE: FABs are highly contextual. Suppressed on Details/Transactional screens. Backlog is task-focused/transactional. -->
+</body></html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OpenClaws Mission Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#091c35",
+                        "tertiary-fixed": "#8df7c1",
+                        "primary-container": "#0052cc",
+                        "secondary-container": "#cdddff",
+                        "surface-container": "#edeef0",
+                        "secondary-fixed-dim": "#b7c7e8",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fb",
+                        "primary": "#003d9b",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "outline": "#737685",
+                        "surface-tint": "#0c56d0",
+                        "on-secondary-container": "#51617e",
+                        "on-tertiary-container": "#7de7b2",
+                        "surface-variant": "#e1e2e4",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-container": "#006844",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005235",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#434654",
+                        "on-secondary-fixed-variant": "#374763",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-primary-fixed": "#001848",
+                        "surface-dim": "#d9dadc",
+                        "inverse-surface": "#2e3132",
+                        "primary-fixed": "#dae2ff",
+                        "tertiary-fixed-dim": "#71dba6",
+                        "on-primary-container": "#c4d2ff",
+                        "surface": "#f8f9fb",
+                        "secondary": "#4f5f7b",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#004e32",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f4f6",
+                        "surface-bright": "#f8f9fb",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "inverse-primary": "#b2c5ff",
+                        "outline-variant": "#c3c6d6",
+                        "surface-container-high": "#e7e8ea"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .chart-gradient-burn { background: linear-gradient(180deg, rgba(0, 61, 155, 0.1) 0%, rgba(0, 61, 155, 0) 100%); }
+        .cta-gradient { background: linear-gradient(135deg, #003d9b 0%, #0052cc 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="fixed h-[calc(100vh-16px)] w-64 left-2 top-2 rounded-xl bg-slate-50 dark:bg-slate-900 shadow-sm flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 font-headline">OpenClaws</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Command Center</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold border-l-2 border-emerald-400 bg-white dark:bg-slate-800 transition-all translate-x-1 duration-200 rounded-r-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="trello">pinboard</span>
+<span class="font-body text-sm">Task Board</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-body text-sm">Backlog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-body text-sm">Mission Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body text-sm">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-4">
+<button class="w-full cta-gradient text-white py-2.5 rounded-lg font-headline font-bold text-sm shadow-md flex items-center justify-center gap-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Mission
+            </button>
+</div>
+<div class="mt-auto px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-body text-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-body text-sm">Account</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex items-center justify-between px-8 w-full">
+<div class="flex items-center gap-8 flex-1">
+<div class="relative w-64 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-1.5 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search commands..." type="text"/>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-body font-medium text-sm" href="#">Active Sprints</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-body font-medium text-sm transition-colors" href="#">Reports</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-body font-medium text-sm transition-colors" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<button class="px-4 py-1.5 text-primary font-semibold text-sm hover:bg-primary-fixed transition-colors rounded-lg">Share</button>
+<button class="px-5 py-1.5 cta-gradient text-white font-bold text-sm rounded-lg shadow-sm transition-transform active:scale-95">Deploy</button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border-2 border-primary-container object-cover ml-2" data-alt="Close-up professional headshot of a creative director in a modern office with soft cinematic lighting and blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU32Sd45i7CkxaLicKxpqfMfOPHc3uWsNTDwe9vJjd3FPg76wjTlzYCXc0bNR2XTYcoTJAkw8zqT34yFa4C-_pU8GPclYPaTo3rqTFx48nu3HkCbh8bmSEBzhT1H6dbaBRu6Goowar-PRxW6t12n6DdPAMFUCYFyuPVMnZtxzRcrVbWUUikZ8SUZW_qUimtS5HlFAxaUa7Cyv_0EjUFEBcwnAZj8FDl-23czSY__ZIZOVLLujMoETJq4_QsSkdE8yJTcF1pTQJRQ"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-72 pt-20 pr-8 pb-8 min-h-screen">
+<div class="max-w-7xl mx-auto">
+<!-- Dashboard Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-3xl font-extrabold font-headline tracking-tight text-on-surface">Mission Overview</h2>
+<p class="text-on-surface-variant font-body">Project health and operational tactical summary.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold font-label uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed animate-pulse"></span>
+                        Status: Optimal
+                    </span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Burndown Chart Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="font-headline font-bold text-lg">Sprint Burndown</h3>
+<p class="text-xs text-on-surface-variant font-medium">Sprint #42: Orbital Strike Initiative</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Ideal</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Remaining</span>
+</div>
+</div>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="relative flex-1 h-64 w-full bg-surface-container-low rounded-lg overflow-hidden flex items-end">
+<div class="absolute inset-0 chart-gradient-burn"></div>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<!-- Ideal line -->
+<line stroke="#003d9b" stroke-dasharray="2" stroke-width="0.5" x1="0" x2="100" y1="5" y2="35"></line>
+<!-- Actual line -->
+<path d="M 0 5 L 10 7 L 20 12 L 30 11 L 40 18 L 50 15 L 60 22 L 70 20 L 80 28 L 90 27 L 100 35" fill="none" stroke="#10b981" stroke-width="1.5"></path>
+</svg>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between text-[10px] font-bold text-slate-400 uppercase">
+<span>Day 01</span>
+<span>Day 04</span>
+<span>Day 08</span>
+<span>Day 12</span>
+<span>Day 14</span>
+</div>
+</div>
+</div>
+<!-- Velocity & Efficiency Mini Cards -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Squad Velocity</p>
+<h4 class="text-4xl font-extrabold font-headline text-primary">54.2</h4>
+<p class="text-xs font-medium text-tertiary flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                                +12% from previous sprint
+                            </p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-9xl" data-icon="speed">speed</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Task Completion Rate</p>
+<h4 class="text-4xl font-extrabold font-headline text-on-surface">92<span class="text-lg">%</span></h4>
+<div class="w-full bg-surface-container-low h-1.5 rounded-full mt-4">
+<div class="bg-primary h-full rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-bold text-lg">Mission Logs</h3>
+<button class="text-primary text-xs font-bold hover:underline">View All</button>
+</div>
+<div class="space-y-6">
+<!-- Activity Item -->
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex-shrink-0 flex items-center justify-center">
+<img alt="Team member" class="w-full h-full rounded-full object-cover" data-alt="Portrait of a male software engineer with a beard wearing glasses in a brightly lit studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLQxoWWdK9V4QP9GR8TFoGaeUXfc6oaY0Gpv44NhRvBK6mXO3cMvpdp0TJWy7_QGWXUTjAUNZIEh7jUVxp2M_E3AAmihb1ImXM8UMIhKHTlaeGLgLks_NyLIsmdIRFqP-BtLlejIJyhO2jaznj6ywUsIzStJJTXZP_lYVw59oNZeF78CuyXimXHf_cb27KYRVxWVaEGGxd9YiAocitNXcy-F2GLprSXZ5R1HOnn9m4-IjfMZkrwQE10mLjXXT6DNr2aZCju7eb5A"/>
+</div>
+<div class="flex-1">
+<p class="text-sm text-on-surface leading-tight">
+<span class="font-bold">Alex Chen</span> deployed <span class="text-primary font-semibold">auth-module-v2</span> to staging.
+                                </p>
+<p class="text-[11px] text-on-surface-variant mt-1">24 minutes ago • Production Tier</p>
+</div>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] rounded-full font-bold uppercase">System</span>
+</div>
+<div class="flex gap-4 items-start border-l-2 border-surface-container ml-5 pl-7 pb-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center -ml-[45px]">
+<span class="material-symbols-outlined text-sm text-on-surface-variant" data-icon="commit">commit</span>
+</div>
+<div class="flex-1">
+<p class="text-xs text-on-surface-variant italic">"Fixed race condition in session management handler"</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex-shrink-0 flex items-center justify-center">
+<img alt="Team member" class="w-full h-full rounded-full object-cover" data-alt="Corporate portrait of a professional woman smiling in a modern bright office environment with light wood accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrCUux1B-ETh1CaOnQSLPqbgR8wZxduk8FYFL_l7ixSpahpHHW4G3BQX16FEWsC0Se3Bmnq33tMks17HGYg8yVLVkey5GjKfzMH3-HMGveU-fMFq3g_VETYRyaSRETdoIPpAKMlEU5Y36lmGJENaOa7f2M3lYIIt33t6H0kiJ482A7okhg5aVPGhR_AdxjiieT8om5K0FKQ9jITHl6dAchNyDgFUQHSAbjVCFGAII6sZMY9sE6pQhvrJF9sgtVF87gixemKuVXYg"/>
+</div>
+<div class="flex-1">
+<p class="text-sm text-on-surface leading-tight">
+<span class="font-bold">Sarah Jenkins</span> completed the <span class="text-tertiary font-semibold">Security Audit</span> for S1.
+                                </p>
+<p class="text-[11px] text-on-surface-variant mt-1">2 hours ago • Governance</p>
+</div>
+<span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container text-[10px] rounded-full font-bold uppercase">Audit</span>
+</div>
+</div>
+</div>
+<!-- Active Sprints Quick Links -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<h3 class="font-headline font-bold text-lg mb-4">Active Deployments</h3>
+<div class="space-y-3">
+<div class="group p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<div class="flex justify-between items-center mb-2">
+<h4 class="text-sm font-bold font-headline">Alpha-Echo Sector</h4>
+<span class="text-[10px] text-tertiary font-extrabold uppercase">Stable</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[85%]"></div>
+</div>
+<span class="text-[10px] font-bold">85%</span>
+</div>
+</div>
+<div class="group p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<div class="flex justify-between items-center mb-2">
+<h4 class="text-sm font-bold font-headline">Delta-Omega Core</h4>
+<span class="text-[10px] text-error font-extrabold uppercase tracking-tighter">Bottleneck</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-error h-full w-[34%]"></div>
+</div>
+<span class="text-[10px] font-bold">34%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary-container rounded-xl p-6 shadow-sm text-white relative overflow-hidden h-full">
+<div class="relative z-10 flex flex-col h-full">
+<h3 class="font-headline font-bold text-lg mb-2">Team Sync Ready</h3>
+<p class="text-sm text-on-primary-container mb-6">Your daily briefing is prepared for the 09:00 standup.</p>
+<div class="mt-auto flex -space-x-2">
+<img alt="team" class="w-8 h-8 rounded-full border-2 border-primary-container" data-alt="close-up of a young professional man with a neutral expression against a plain background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrUq1II9VFeMp3aAo3M2cyrEXU4LsVS_1hNhNqn7Esdtget6Bq7q5OHRKxhr8nnBU2PQP1VKpSCbz1bSzArtFOyhCxq6lHwR2EOA1L84aGEstrF5o1rdsp1KBh_hVnsz3jO7KcXSemJrbVymy7lH69vA9jf6he0RPXmgNy5pMKbJo5AzNEuaT9v-SVy1S-erWiMFn31Es_YlAKxjPxNHrzwz8_MI62mgJctFqOvY88l88lT9J0b9LieKZA23t7YaGgxr0o-_q7zw"/>
+<img alt="team" class="w-8 h-8 rounded-full border-2 border-primary-container" data-alt="professional portrait of a woman with glasses looking directly at the camera with a slight smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcCYJIDyIe2txIe2adLfvS3nHrNAtqzXqeNwKRLvdbNJUIb4kv2V8IA-7WeM-DGeIQ9axIYTJJXO3ZH4eEh_-ej3CuTwvL8N3wseGmO3vj-KWppFePHSSyYH56BpGspTQd0BsJ9aOcHVnNQQhHhXGBZ8azYCq0GrqqOtSl_otedRCnrisi0N0xWV8LVomWrpFemMy620XBjjD70RhWtySfybgw-ip8JXoKwJZFdIJ2CHshMQ6_8Qwm0rYXjwaMt6Jv1Rdm3fkEzQ"/>
+<img alt="team" class="w-8 h-8 rounded-full border-2 border-primary-container" data-alt="young man with short curly hair smiling warmly at the camera in soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1rLRyRE0V6qvGjI-qRQGIm1IK62ycKMkQFQ7vee10nQwZF0bfMnU7WO30QLol6kG97lGt3xQa9Dc-cx89yQFvA24irTrecSeP9vs3OhMu1V9-Kkw46pK_MC_ohHrGeK0TUNeGma8fWK8YLdhW-n0bjyCpNKU45Sg9AXLzyI62wnEWA3F5acnwPt57aTsykFefB0NAQhLyfc9CoIYZHdD3xxaZpfgxU8bmLZLnuodHtfnbjzPciKad0b2V0w_gLnKLk330ZgVajg"/>
+<div class="w-8 h-8 rounded-full border-2 border-primary-container bg-primary flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<button class="mt-4 w-full bg-white text-primary py-2 rounded-lg font-bold text-xs uppercase tracking-widest shadow-xl">Join Tactical Briefing</button>
+</div>
+<div class="absolute right-0 top-0 w-32 h-32 bg-white/5 -mr-16 -mt-16 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

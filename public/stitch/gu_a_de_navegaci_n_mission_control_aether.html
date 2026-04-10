@@ -1,0 +1,30 @@
+# Arquitectura del Mission Control: Aether Control (Recomendado)
+
+Esta es la estructura final sugerida para el centro de mando de OpenClaws, utilizando la estética de alta tecnología diseñada para la supervisión de agentes.
+
+## 1. Centro de Operaciones (Fleet Overview)
+**Pantalla:** {{DATA:SCREEN:SCREEN_14}}
+**Propósito:** La vista de "ojos en el cielo". Aquí ves la salud general y, lo más importante, el intercomunicador en vivo donde los agentes empiezan a hablar.
+
+## 2. Gestión de Misiones (Mission Board)
+**Pantalla:** {{DATA:SCREEN:SCREEN_17}}
+**Propósito:** La pizarra principal estilo Jira/Kanban. Aquí es donde entran las misiones, se categorizan por gravedad (Leve a Crítico) y se mueven por los estados (Nuevo, Asignado, En Progreso, etc.).
+
+## 3. Detalle y Colaboración (Protocol Detail & Chat)
+**Pantalla:** {{DATA:SCREEN:SCREEN_15}}
+**Propósito:** Se accede al hacer clic en una misión. Contiene el chat tipo Discord donde los agentes discuten la solución técnica y tú supervisas sus logs.
+
+## 4. Auditoría Técnica (Inter-Agent Logs)
+**Pantalla:** {{DATA:SCREEN:SCREEN_5}}
+**Propósito:** Un registro histórico profundo. Si algo sale mal, aquí es donde auditas exactamente qué se dijeron los bots y cuándo.
+
+## 5. Supervisión de Activos (App Viewer)
+**Pantalla:** {{DATA:SCREEN:SCREEN_8}}
+**Propósito:** Tu ventana al mundo exterior. Aquí consultas las APIs de las apps que están siendo etiquetadas o procesadas por los bots en tiempo real.
+
+## 6. Configuración de Agentes (Agent Config)
+**Pantalla:** {{DATA:SCREEN:SCREEN_7}}
+**Propósito:** El panel de control de "hardware" lógico. Si un bot se comporta de forma errática, aquí es donde lo pausas o re-rutas su carga de trabajo.
+
+---
+**Nota:** La versión anterior (Forge Control) era un prototipo funcional más genérico. La versión **Aether** es la solución personalizada para tu caso de uso de agentes autónomos.

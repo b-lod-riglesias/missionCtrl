@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OpenClaws - Task Board</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#091c35",
+                    "tertiary-fixed": "#8df7c1",
+                    "primary-container": "#0052cc",
+                    "secondary-container": "#cdddff",
+                    "surface-container": "#edeef0",
+                    "secondary-fixed-dim": "#b7c7e8",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "error-container": "#ffdad6",
+                    "background": "#f8f9fb",
+                    "primary": "#003d9b",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#0040a2",
+                    "outline": "#737685",
+                    "surface-tint": "#0c56d0",
+                    "on-secondary-container": "#51617e",
+                    "on-tertiary-container": "#7de7b2",
+                    "surface-variant": "#e1e2e4",
+                    "on-surface": "#191c1e",
+                    "secondary-fixed": "#d6e3ff",
+                    "on-tertiary-fixed": "#002113",
+                    "tertiary-container": "#006844",
+                    "inverse-on-surface": "#f0f1f3",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005235",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#434654",
+                    "on-secondary-fixed-variant": "#374763",
+                    "surface-container-highest": "#e1e2e4",
+                    "on-primary-fixed": "#001848",
+                    "surface-dim": "#d9dadc",
+                    "inverse-surface": "#2e3132",
+                    "primary-fixed": "#dae2ff",
+                    "tertiary-fixed-dim": "#71dba6",
+                    "on-primary-container": "#c4d2ff",
+                    "surface": "#f8f9fb",
+                    "secondary": "#4f5f7b",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#004e32",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f3f4f6",
+                    "surface-bright": "#f8f9fb",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "inverse-primary": "#b2c5ff",
+                    "outline-variant": "#c3c6d6",
+                    "surface-container-high": "#e7e8ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed h-[calc(100vh-16px)] w-64 left-2 top-2 rounded-xl bg-slate-50 dark:bg-slate-900 shadow-sm flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">OpenClaws</h1>
+<p class="text-xs text-on-surface-variant font-medium opacity-70">Command Center</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold border-l-2 border-emerald-400 bg-white dark:bg-slate-800 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="trello">pinboard</span>
+<span class="font-medium">Task Board</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-medium">Backlog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-medium">Mission Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-2.5 rounded-lg font-semibold text-sm mb-6 shadow-md hover:scale-[0.98] transition-transform">
+                New Mission
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="text-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-sm">Account</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex items-center justify-between px-8 w-full">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-xl" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search mission control..." type="text"/>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-medium text-sm" href="#">Active Sprints</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-medium text-sm transition-colors" href="#">Reports</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-medium text-sm transition-colors" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant/30 mx-2"></div>
+<button class="text-primary font-semibold text-sm px-4 py-2 hover:bg-primary/5 rounded-md">Share</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-semibold text-sm shadow-sm hover:bg-primary-container transition-colors">Deploy</button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full ml-2 object-cover border-2 border-surface-container-high" data-alt="professional male headshot with neutral background, clean lighting and focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhx6WJFWjbwGKaURYdZa5E8v0hrMvGJcwOs-HlM-hIpT70nkkeWnnByMKxJ_pEhUBeF8af9_RxATVLD6NJmgPe4BT7LqItHsE2CTvdojwJFNaur6uyBP92RCqWKt7T6-OSENcXD9GcWp5b-ffqgQRkHpvTtxnAqbAs6cFuOau2BBxYdDBIsNyAVPo5cuwzKe7FaPNi2UYlNaxTbNmaJoYuD8G72voO61MDoHQq_wiFXXoq9xqaoWrfmKfaTv3q5z_CDvMotifzUw"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-72 pt-24 pr-8 pb-8 min-h-screen">
+<!-- Header Section -->
+<header class="mb-10">
+<div class="flex items-end justify-between">
+<div>
+<nav class="flex items-center gap-2 text-xs text-on-surface-variant font-medium mb-2 uppercase tracking-wider">
+<span>Missions</span>
+<span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary">Starlight Protocol</span>
+</nav>
+<h2 class="text-3xl font-extrabold text-on-surface tracking-tight font-headline">Starlight Sprint 04</h2>
+</div>
+<div class="flex items-center -space-x-2">
+<img alt="team" class="w-10 h-10 rounded-full border-4 border-background" data-alt="portrait of a creative professional woman with glasses and confident smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdtagRG24TVArY7nCfgviewZlugec6YHB-oRD0xvx6nf4D8LwUNbqRxedf1fALXl9vuaUd8gh65OG2LAVpSFZFYsY7uTYJIiI9gS5k1F2xRMRoi-6B57CwH8w5kCHTo_jvYFcjwUTDdrvJJ4ZzQlsApWDiSEFKHeMd6yuV5KorcLEe0bztkenLSdoGABKYp55GYUrFiwtOMxVNP1DhEX9crj2vij_tkHo9hKHoztTQW1K1ASc_YniFu_ZoJHyMxs3_SFvJjqkbyA"/>
+<img alt="team" class="w-10 h-10 rounded-full border-4 border-background" data-alt="portrait of a man with beard smiling warmly in professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvk-ykxrw5rWTEt25ngxXtxX7cqseDQICEN9YmXl6bYRUljgqNuz2pxC1B3ZVZ1eL6B0hxy6_PzgzneJWJNh64NoA7FVUhmAMCzwILGaXzh10NtUu93mT6Fk5ETjG8VWeU-lOCTto3Kus7k7mEZUQuCQjdmQhmcfDJTBFNjkZeWKfLJij6LOagbJoG359ovfg-XrjMItW2w5RFdLBkgTNkssVPu7vvshZ9DwtfeznfH4XMzan2zvi3Gh_A0_ezZ5L-Qd7X7WtVUg"/>
+<img alt="team" class="w-10 h-10 rounded-full border-4 border-background" data-alt="portrait of a young woman with a thoughtful look in high key studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFNHOvURsh70giE9WWUOYL0fAL_XGS20nW5Z-jz597GcgeoUiQFsGRekIFv4GEMeLT4Y1fE21MN-bOeZ3zcVZPzlwhKnDLsstwi3gllAxBCv1Ec89eHANX75kQfruztsXRVJscemABeJyq2kCHZejJEKxu0bTS6K6ocYv4fOCEnGssWJ66OgEwx4XRuYN9O3KKb_1ZVUFKjF8x9vZR6Xg6PjJHF33MaBptQNKIrpXKEgJKqmpxokdYbN78Sw1F3Po79V6IrXQqlg"/>
+<div class="w-10 h-10 rounded-full border-4 border-background bg-secondary-container text-on-secondary-container flex items-center justify-center text-xs font-bold">+12</div>
+</div>
+</div>
+</header>
+<!-- Kanban Board Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+<!-- Column: To Do -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<h3 class="font-semibold text-sm text-on-surface uppercase tracking-widest">To Do</h3>
+<span class="text-xs bg-surface-container-high px-2 py-0.5 rounded-full font-bold">5</span>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors" data-icon="add">add</button>
+</div>
+<div class="flex flex-col gap-4 min-h-[500px] bg-surface-container-low/50 rounded-xl p-3">
+<!-- Task Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md transition-all group cursor-pointer border border-transparent hover:border-primary/10">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-error-container text-on-error-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">High</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity" data-icon="more_horiz">more_horiz</span>
+</div>
+<h4 class="font-bold text-on-surface mb-2 leading-tight">Encryption layer optimization for deep-space comms</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Refactor the handshake protocol to reduce latency by 15% across all sectors.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-xs text-outline font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="link">link</span>
+                                OC-1024
+                            </div>
+<img alt="assignee" class="w-6 h-6 rounded-full" data-alt="professional user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZGcXtGdjrKgYoc4xw20zqbeNr8UI4W56oIPfYKWennj39J4pMeHHm9zMW1-0VwJOdpkrYmR5tkwfg7-wwNM2aBu73hnMG81QlSqx8n_Jt4rJx8C4K8ICmtXxv-JOIwiBCd6C2_UX-2w9Ty5yJV5jJra7l2j0X0xgE_u_wZYCyqyn-UENJejxupgu_6eGTaE8g54sb3CpqUZstPtkk8Aps5h802oM9i3pvSIc5r1XCDp0pKlOydA8LTxaoPMh3wV9EQAQCfdYFBQ"/>
+</div>
+</div>
+<!-- Task Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md transition-all group cursor-pointer border border-transparent hover:border-primary/10">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Medium</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity" data-icon="more_horiz">more_horiz</span>
+</div>
+<h4 class="font-bold text-on-surface mb-2 leading-tight">Asset inventory sync</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Verify all celestial assets are accounted for in the master registry.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-xs text-outline font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                                2d
+                            </div>
+<img alt="assignee" class="w-6 h-6 rounded-full" data-alt="professional user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcwSCvpHUKx6ujbJz_BvI3Gl32Ls32Wx0b5x9ByrC7PVcMPfQWi_ryNfPsbiFOm94Bl1C5j9j23sukyCXWdjQfbfIAaReTgRy28efC6G8T5Xe-L2jdOVHswNs8ztlMXP2f0ErTLUvMAC9JIgMSbGFkAXGFsfgnIqnjiBjNExx4jzAkG97XjZ9ieD8FwH7_kXAQH2fPvQliGHJHfHCX6Al9GR8lJKrBvtS9kuqPRNbEUb4pLST0S7kMjIAU0lHqmOqHKK-yx6M8ow"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Column: In Progress -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h3 class="font-semibold text-sm text-on-surface uppercase tracking-widest">In Progress</h3>
+<span class="text-xs bg-surface-container-high px-2 py-0.5 rounded-full font-bold">2</span>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors" data-icon="add">add</button>
+</div>
+<div class="flex flex-col gap-4 min-h-[500px] bg-surface-container-low/50 rounded-xl p-3">
+<!-- Task Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md transition-all group cursor-pointer border-l-4 border-primary ring-1 ring-primary/5">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Normal</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity" data-icon="more_horiz">more_horiz</span>
+</div>
+<h4 class="font-bold text-on-surface mb-2 leading-tight">Dark matter sensor calibration</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Adjusting thresholds for low-density anomalies in Quadrant 7.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-xs text-primary font-bold">
+<span class="material-symbols-outlined text-sm animate-pulse" data-icon="trending_up">trending_up</span>
+                                Active
+                            </div>
+<img alt="assignee" class="w-6 h-6 rounded-full" data-alt="professional user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVcPSadffxAIBCQIHmG6hNAtlV6QmbQiZHHBJjvPQaSQDbyVzqohGqsIep0fRulft9_PR5-MboZ5GKEnzbuTfd-yUPNkv-N6d5_q-3NKX7W2lcS1e6avcH5yNpON3rmgSAleO-nA__PfWfMeEWTpWGaL0lapQipXfEx1PKA3rYfpYuGCQMrhPAKODX6R2942YI0jNGvKfiKMRxTYRYUk2YQjHH1uLwrbeZoH-wzYcD8g4S6k9av5jON-oc9TRbAUesX50_mER3eA"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Column: Review -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-400"></span>
+<h3 class="font-semibold text-sm text-on-surface uppercase tracking-widest">Review</h3>
+<span class="text-xs bg-surface-container-high px-2 py-0.5 rounded-full font-bold">1</span>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors" data-icon="add">add</button>
+</div>
+<div class="flex flex-col gap-4 min-h-[500px] bg-surface-container-low/50 rounded-xl p-3">
+<!-- Task Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md transition-all group cursor-pointer border border-transparent">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-error-container text-on-error-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Urgent</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity" data-icon="more_horiz">more_horiz</span>
+</div>
+<h4 class="font-bold text-on-surface mb-2 leading-tight">Quantum Leak Mitigation</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Final review of the containment field stability tests.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-xs text-outline font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+                                4 comments
+                            </div>
+<img alt="assignee" class="w-6 h-6 rounded-full" data-alt="professional user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgp2lOmkbjfNQ9sS4dDta_tlRJaZb2aodhKRkfmH7pWN7_Fix5L2UQzg5IYYzQar6uy_7h2RfFJcXmkgCmeb1kWh2lE2-N5jJzRbmEZV2Ovao3J4Ts3igLnyOEgHktSxgNwkY0s0e0W-69DLEn4GgaNzIfkKyWQzqiM4Uc7bx4mgIo0GReQa6ZzHIP3En7hMUszcatRARLvUqqnpu_4OnpZzHnTr-w-f-SFnT5IIX5a4-YtIu6wbdXCmBCzicpyFIiSvQcI4XRXA"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Column: Done -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<h3 class="font-semibold text-sm text-on-surface uppercase tracking-widest">Done</h3>
+<span class="text-xs bg-surface-container-high px-2 py-0.5 rounded-full font-bold">12</span>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors" data-icon="add">add</button>
+</div>
+<div class="flex flex-col gap-4 min-h-[500px] bg-surface-container-low/50 rounded-xl p-3 opacity-80">
+<!-- Task Card (Done) -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md transition-all group cursor-pointer border border-transparent">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Complete</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h4 class="font-bold text-on-surface mb-2 leading-tight line-through opacity-50">Stellar Cartography v1.0</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Base map generation for the known solar systems.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-xs text-tertiary font-bold">
+                                Resolved
+                            </div>
+<div class="flex items-center -space-x-1.5">
+<img alt="assignee" class="w-5 h-5 rounded-full ring-2 ring-background" data-alt="professional user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0AlMunBNYORpzd5Pvyewbi-rUB6BDZzwUnyGAxzT6jPXVP2iiUGQtCBF7JXwYBeyXRHNaTE7FwS5l3vAfOgj2u0FJmdyYmDkRu0XWsl23bKhOfVzIzBCIxmPvttq36wM6gJU-YZKOwNDMfxrcXrL2Lo-RUSqb9itsZU7r_NeLchltzvBY4sdv806BE_ePXxWIYkaLVCSLtNiEts5rTu0sT3ZGQD081QxLUsqa5XjJ12-Xflw2RfiML9PspuRB3FVfeo1Wd-6Log"/>
+<img alt="assignee" class="w-5 h-5 rounded-full ring-2 ring-background" data-alt="professional user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASqNqXweWuGquPxJFn_rb3tiyUE8zG4uDtzdVYAXz6XdEBye7wScL__2y3nK7Vt9N8FvzeFXkAe43_QIr--BHoNSEDnIJ7IaDYw7XD0Ed5GEEb-QXlLDg6hp_xW4HJ9AZcsrTX2KIX_bjyWrTNW46yB5tcnSKijkYEpt0brX5601Xq_eFoNg-ofY4aNycjqbBOqQ6HwbvnK4QZ03yexPHFEMCiTgsx4zFOBvGSV7EDyfMOPMxvBlpvgbpxKudzrSvgbLAQSrnKXA"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- FAB Action (Contextual to Task Board) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all group z-50">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform" data-icon="add">add</span>
+</button>
+</body></html>

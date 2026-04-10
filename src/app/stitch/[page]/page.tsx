@@ -1,13 +1,9 @@
-"use client";
-
-import { use } from "react";
-
 interface StitchPageProps {
-  params: Promise<{ page: string }>;
+  params: { page: string };
 }
 
 export default function StitchPage({ params }: StitchPageProps) {
-  const { page } = use(params);
+  const { page } = params;
   const src = `/stitch/${page}.html`;
 
   return (

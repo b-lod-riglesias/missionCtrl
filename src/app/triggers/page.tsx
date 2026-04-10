@@ -67,109 +67,115 @@ export default function TriggersPage() {
   return (
     <div className="flex h-screen bg-background">
       <Sidebar open={sidebarOpen} />
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex-1 flex flex-col overflow-hidden ml-64">
+        <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} title="TRIGGER PROTOCOL" />
 
         <main className="flex-1 overflow-y-auto p-6">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h1 className="text-2xl font-semibold">Triggers</h1>
-                <p className="text-sm text-gray-400 mt-1">
-                  Automatiza acciones entre tus OpenClaws
+                <h1 className="text-2xl font-black text-primary-fixed font-headline uppercase tracking-widest">
+                  Trigger Protocol
+                </h1>
+                <p className="text-sm text-on-surface-variant mt-1">
+                  Automate actions between your OpenClaws agents
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => fetchTriggers()}
                   disabled={loading}
-                  className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:bg-border transition-colors disabled:opacity-50"
+                  className="flex items-center gap-2 px-3 py-2 bg-surface-container border border-outline-variant hover:bg-surface-container-high transition-colors disabled:opacity-50 font-label text-xs font-bold uppercase tracking-widest"
                 >
                   <RefreshCw size={16} className={loading ? "animate-spin" : ""} />
-                  Actualizar
+                  REFRESH
                 </button>
                 <button
                   onClick={() => setEditorOpen(true)}
-                  className="flex items-center gap-2 px-3 py-2 bg-accent text-white rounded-lg hover:bg-accent/80 transition-colors"
+                  className="flex items-center gap-2 px-3 py-2 bg-primary-fixed text-on-primary-fixed font-bold text-[10px] uppercase tracking-widest hover:brightness-110 transition-all"
                 >
                   <Plus size={16} />
-                  Nuevo Trigger
+                  NEW TRIGGER
                 </button>
               </div>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-5 gap-4 mb-8">
-              <div className="bg-card border border-border rounded-lg p-4">
-                <p className="text-gray-400 text-sm">Total</p>
-                <p className="text-3xl font-bold">{stats.total}</p>
+              <div className="bg-surface-container-low p-4">
+                <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2">Total</p>
+                <p className="text-3xl font-black text-primary-fixed font-headline">{stats.total}</p>
               </div>
-              <div className="bg-card border border-border rounded-lg p-4">
-                <p className="text-gray-400 text-sm">Activos</p>
-                <p className="text-3xl font-bold text-success">{stats.active}</p>
+              <div className="bg-surface-container-low p-4">
+                <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2">Active</p>
+                <p className="text-3xl font-black text-secondary font-headline">{stats.active}</p>
               </div>
-              <div className="bg-card border border-border rounded-lg p-4">
-                <p className="text-gray-400 text-sm">Inactivos</p>
-                <p className="text-3xl font-bold text-gray-400">{stats.inactive}</p>
+              <div className="bg-surface-container-low p-4">
+                <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2">Inactive</p>
+                <p className="text-3xl font-black text-on-surface-variant font-headline">{stats.inactive}</p>
               </div>
-              <div className="bg-card border border-border rounded-lg p-4">
-                <p className="text-gray-400 text-sm">Errores</p>
-                <p className="text-3xl font-bold text-error">{stats.errors}</p>
+              <div className="bg-surface-container-low p-4">
+                <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2">Errors</p>
+                <p className="text-3xl font-black text-error font-headline">{stats.errors}</p>
               </div>
-              <div className="bg-card border border-border rounded-lg p-4">
-                <p className="text-gray-400 text-sm">Ejecuciones hoy</p>
-                <p className="text-3xl font-bold text-accent">{stats.triggersToday}</p>
+              <div className="bg-surface-container-low p-4">
+                <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2">Exec Today</p>
+                <p className="text-3xl font-black text-tertiary-fixed-dim font-headline">{stats.triggersToday}</p>
               </div>
             </div>
 
             {/* Filters */}
             <div className="flex items-center gap-4 mb-6">
               <div className="relative flex-1 max-w-md">
-                <Search
-                  size={16}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
-                />
+                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" />
                 <input
                   type="text"
-                  placeholder="Buscar triggers..."
+                  placeholder="Search triggers..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 bg-card border border-border rounded-lg text-sm focus:outline-none focus:border-accent transition-colors"
+                  className="w-full pl-9 pr-4 py-2 bg-surface-container-low border border-outline-variant text-sm focus:outline-none focus:border-primary-fixed transition-colors font-label uppercase placeholder:text-outline-variant/50"
                 />
               </div>
               <div className="flex items-center gap-2">
-                <Filter size={16} className="text-gray-500" />
+                <Filter size={16} className="text-on-surface-variant" />
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as Trigger["status"] | "all")}
-                  className="bg-card border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent"
+                  className="bg-surface-container-low border border-outline-variant px-3 py-2 text-sm focus:outline-none focus:border-primary-fixed font-label"
                 >
-                  <option value="all">Todos</option>
-                  <option value="active">Activos</option>
-                  <option value="inactive">Inactivos</option>
-                  <option value="error">Error</option>
+                  <option value="all">ALL STATUS</option>
+                  <option value="active">ACTIVE</option>
+                  <option value="inactive">INACTIVE</option>
+                  <option value="error">ERROR</option>
                 </select>
               </div>
             </div>
 
+            {/* Error */}
+            {error && (
+              <div className="bg-error-container border border-error/20 rounded p-4 mb-6">
+                <p className="text-error text-sm font-label">{error}</p>
+              </div>
+            )}
+
             {/* Loading */}
             {loading && triggers.length === 0 && (
               <div className="flex items-center justify-center py-20">
-                <RefreshCw size={32} className="animate-spin text-accent" />
+                <RefreshCw size={32} className="animate-spin text-primary-fixed" />
               </div>
             )}
 
             {/* Empty state */}
             {!loading && filteredTriggers.length === 0 && (
               <div className="text-center py-20">
-                <Zap size={48} className="mx-auto text-gray-600 mb-4" />
-                <p className="text-gray-400 mb-2">No se encontraron triggers</p>
+                <Zap size={48} className="mx-auto text-outline-variant mb-4" />
+                <p className="text-on-surface-variant mb-2">No triggers found</p>
                 <button
                   onClick={() => setEditorOpen(true)}
-                  className="text-accent hover:underline"
+                  className="text-primary-fixed hover:underline font-label text-sm uppercase tracking-widest"
                 >
-                  Crear el primero
+                  CREATE FIRST TRIGGER
                 </button>
               </div>
             )}

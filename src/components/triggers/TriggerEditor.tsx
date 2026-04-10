@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, Plus, Zap, ArrowRight, Trash2 } from "lucide-react";
+import { X, Zap, ArrowRight } from "lucide-react";
 import type { Trigger, TriggerCondition, TriggerAction } from "@/types/trigger";
 
 interface TriggerEditorProps {
@@ -12,19 +12,19 @@ interface TriggerEditorProps {
 }
 
 const conditionTypes = [
-  { value: "bot_status", label: "Estado del bot" },
-  { value: "message_contains", label: "Mensaje contiene" },
-  { value: "keyword", label: "Keyword" },
-  { value: "schedule", label: "Programación" },
-  { value: "webhook", label: "Webhook" },
+  { value: "bot_status", label: "BOT STATUS" },
+  { value: "message_contains", label: "MSG CONTAINS" },
+  { value: "keyword", label: "KEYWORD" },
+  { value: "schedule", label: "SCHEDULE" },
+  { value: "webhook", label: "WEBHOOK" },
 ];
 
 const actionTypes = [
-  { value: "send_message", label: "Enviar mensaje" },
-  { value: "run_command", label: "Ejecutar comando" },
-  { value: "notify", label: "Notificar" },
-  { value: "webhook", label: "Llamar webhook" },
-  { value: "bot_action", label: "Acción en bot" },
+  { value: "send_message", label: "SEND MSG" },
+  { value: "run_command", label: "RUN CMD" },
+  { value: "notify", label: "NOTIFY" },
+  { value: "webhook", label: "WEBHOOK" },
+  { value: "bot_action", label: "BOT ACTION" },
 ];
 
 export default function TriggerEditor({ trigger, onSave, onClose, bots }: TriggerEditorProps) {
@@ -68,14 +68,14 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-card border border-border rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="bg-surface-container-low border border-outline-variant rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border">
-          <h2 className="text-xl font-semibold">
-            {trigger ? "Editar Trigger" : "Nuevo Trigger"}
+        <div className="flex items-center justify-between p-6 border-b border-outline-variant">
+          <h2 className="text-xl font-black text-primary-fixed font-headline uppercase tracking-widest">
+            {trigger ? "EDIT TRIGGER" : "NEW TRIGGER"}
           </h2>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-border transition-colors">
-            <X size={20} />
+          <button onClick={onClose} className="p-2 rounded-lg hover:bg-surface-container transition-colors">
+            <X size={20} className="text-on-surface-variant" />
           </button>
         </div>
 
@@ -84,46 +84,46 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
           {/* Basic info */}
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
-                Nombre del trigger
+              <label className="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 font-label">
+                Trigger Name
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="ej: Alerta stock bajo"
+                placeholder="ALERT: LOW STOCK"
                 required
-                className="w-full px-3 py-2 bg-background border border-border rounded-lg focus:outline-none focus:border-accent"
+                className="w-full px-3 py-2 bg-surface-container border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label uppercase placeholder:text-outline-variant/50"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
-                Descripción (opcional)
+              <label className="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 font-label">
+                Description (optional)
               </label>
               <input
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Qué hace este trigger..."
-                className="w-full px-3 py-2 bg-background border border-border rounded-lg focus:outline-none focus:border-accent"
+                placeholder="What this trigger does..."
+                className="w-full px-3 py-2 bg-surface-container border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label uppercase placeholder:text-outline-variant/50"
               />
             </div>
           </div>
 
           {/* Condition */}
-          <div className="bg-background rounded-lg p-4 space-y-4">
-            <div className="flex items-center gap-2 text-sm font-medium">
-              <Zap size={16} className="text-warning" />
-              <span>CONDICIÓN</span>
+          <div className="bg-surface-container rounded-lg p-4 space-y-4">
+            <div className="flex items-center gap-2 text-sm font-bold">
+              <Zap size={16} className="text-tertiary-fixed-dim" />
+              <span className="font-headline uppercase tracking-widest text-tertiary-fixed-dim">CONDITION</span>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Tipo</label>
+                <label className="block text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 font-label">Type</label>
                 <select
                   value={conditionType}
                   onChange={(e) => setConditionType(e.target.value as TriggerCondition["type"])}
-                  className="w-full px-3 py-2 bg-card border border-border rounded-lg focus:outline-none focus:border-accent"
+                  className="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label"
                 >
                   {conditionTypes.map((t) => (
                     <option key={t.value} value={t.value}>
@@ -135,16 +135,16 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
 
               {(conditionType === "bot_status") && (
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Bot</label>
+                  <label className="block text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 font-label">Bot</label>
                   <select
                     value={conditionBotId}
                     onChange={(e) => setConditionBotId(e.target.value)}
-                    className="w-full px-3 py-2 bg-card border border-border rounded-lg focus:outline-none focus:border-accent"
+                    className="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label"
                   >
-                    <option value="">Seleccionar bot...</option>
+                    <option value="">SELECT BOT...</option>
                     {bots.map((bot) => (
                       <option key={bot.id} value={bot.id}>
-                        {bot.name}
+                        {bot.name.toUpperCase()}
                       </option>
                     ))}
                   </select>
@@ -153,13 +153,13 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
 
               {(conditionType !== "bot_status" && conditionType !== "schedule") && (
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Valor</label>
+                  <label className="block text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 font-label">Value</label>
                   <input
                     type="text"
                     value={conditionValue}
                     onChange={(e) => setConditionValue(e.target.value)}
-                    placeholder="Valor a comparar..."
-                    className="w-full px-3 py-2 bg-card border border-border rounded-lg focus:outline-none focus:border-accent"
+                    placeholder="VALUE TO MATCH..."
+                    className="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label uppercase placeholder:text-outline-variant/50"
                   />
                 </div>
               )}
@@ -168,23 +168,23 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
 
           {/* Arrow */}
           <div className="flex justify-center">
-            <ArrowRight size={24} className="text-gray-600" />
+            <ArrowRight size={24} className="text-outline" />
           </div>
 
           {/* Action */}
-          <div className="bg-background rounded-lg p-4 space-y-4">
-            <div className="flex items-center gap-2 text-sm font-medium">
-              <Zap size={16} className="text-accent" />
-              <span>ACCIÓN</span>
+          <div className="bg-surface-container rounded-lg p-4 space-y-4">
+            <div className="flex items-center gap-2 text-sm font-bold">
+              <Zap size={16} className="text-primary-fixed" />
+              <span className="font-headline uppercase tracking-widest text-primary-fixed">ACTION</span>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Tipo</label>
+                <label className="block text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 font-label">Type</label>
                 <select
                   value={actionType}
                   onChange={(e) => setActionType(e.target.value as TriggerAction["type"])}
-                  className="w-full px-3 py-2 bg-card border border-border rounded-lg focus:outline-none focus:border-accent"
+                  className="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label"
                 >
                   {actionTypes.map((t) => (
                     <option key={t.value} value={t.value}>
@@ -196,16 +196,16 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
 
               {(actionType === "bot_action" || actionType === "send_message") && (
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Bot destino</label>
+                  <label className="block text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 font-label">Target Bot</label>
                   <select
                     value={actionBotId}
                     onChange={(e) => setActionBotId(e.target.value)}
-                    className="w-full px-3 py-2 bg-card border border-border rounded-lg focus:outline-none focus:border-accent"
+                    className="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label"
                   >
-                    <option value="">Seleccionar bot...</option>
+                    <option value="">SELECT BOT...</option>
                     {bots.map((bot) => (
                       <option key={bot.id} value={bot.id}>
-                        {bot.name}
+                        {bot.name.toUpperCase()}
                       </option>
                     ))}
                   </select>
@@ -215,13 +215,13 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
 
             {(actionType === "send_message" || actionType === "notify") && (
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Mensaje / Plantilla</label>
+                <label className="block text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 font-label">Message / Template</label>
                 <textarea
                   value={actionTemplate}
                   onChange={(e) => setActionTemplate(e.target.value)}
-                  placeholder="¡Alerta! Stock bajo en {{producto}}"
+                  placeholder="⚠️ ALERT: Low stock on {{product}}"
                   rows={2}
-                  className="w-full px-3 py-2 bg-card border border-border rounded-lg focus:outline-none focus:border-accent resize-none"
+                  className="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:border-primary-fixed font-label resize-none uppercase placeholder:text-outline-variant/50"
                 />
               </div>
             )}
@@ -232,15 +232,15 @@ export default function TriggerEditor({ trigger, onSave, onClose, bots }: Trigge
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-border rounded-lg hover:bg-border transition-colors"
+              className="px-4 py-2 border border-outline-variant rounded hover:bg-surface-container transition-colors font-label text-xs font-bold uppercase tracking-widest"
             >
-              Cancelar
+              CANCEL
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/80 transition-colors"
+              className="px-4 py-2 bg-primary-fixed text-on-primary-fixed rounded hover:brightness-110 transition-colors font-label text-xs font-black uppercase tracking-widest"
             >
-              {trigger ? "Guardar cambios" : "Crear trigger"}
+              {trigger ? "SAVE CHANGES" : "CREATE TRIGGER"}
             </button>
           </div>
         </form>
